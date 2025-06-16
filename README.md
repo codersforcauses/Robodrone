@@ -1,6 +1,8 @@
-# django-nextjs-template
+# Robodrone Leaderboard
 
-Django + Nextjs Template: Standardised CFC Tech Stack
+A web-based leaderboard system for the **2025 Drone Competition & STEM Festival** at **Murdoch University**, developed by **Coders for Causes** in collaboration with **Squadrone** and **AICODE AUS**.
+
+Utilizing the Django + Nextjs Template: Standardised CFC Tech Stack
 
 ## Get started
 
