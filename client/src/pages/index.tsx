@@ -5,6 +5,7 @@ import { usePings } from "@/hooks/pings";
 import { cn } from "@/lib/utils";
 
 import { Button } from "../components/ui/button";
+import LandingPage from "../components/ui/LandingPage";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -24,13 +25,7 @@ export default function Home() {
         fontSans.variable,
       )}
     >
-      <h1 className="text-3xl text-primary">Test title</h1>
-      <Button onClick={() => setClicked(true)}>
-        {isLoading ? "Loading" : "Ping"}
-      </Button>
-      <p>
-        Response from server: <span>{data as string}</span>
-      </p>
+      <LandingPage />
     </main>
   );
 }
