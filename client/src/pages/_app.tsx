@@ -19,17 +19,11 @@ const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <style jsx global>{`
-        :root {
-          --font-montserrat: ${fontMontserrat.style.fontFamily};
-          --font-worksans: ${fontWorkSans.style.fontFamily};
-        }
-      `}</style>
+    <div className={`${fontMontserrat.variable} ${fontWorkSans}`}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Component {...pageProps} />
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
