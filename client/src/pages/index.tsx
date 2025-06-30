@@ -24,6 +24,8 @@ export default function Home() {
         fontSans.variable,
       )}
     >
+      {/* Delete after style testing */}
+      <p className="subtitle">subtitle style test</p>
       <h1 className="text-3xl text-primary">Test title</h1>
       <Button onClick={() => setClicked(true)}>
         {isLoading ? "Loading" : "Ping"}

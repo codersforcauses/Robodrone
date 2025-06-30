@@ -21,6 +21,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
+        worksans: ["var(--font-worksans)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
