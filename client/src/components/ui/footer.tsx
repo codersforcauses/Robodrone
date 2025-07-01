@@ -14,44 +14,45 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
 
     return (
       <Comp
-        className={cn("px-6 py-12 font-sans text-white", className)}
+        className={cn("px-6 py-12 text-white", className)}
         style={{ backgroundColor: "#212529" }}
         ref={ref}
         {...props}
       >
         <div className="mx-auto max-w-7xl">
           {/* Main content with horizontal line */}
-          <div className="stroke-3 grid grid-cols-1 gap-10 border-b border-white pb-5 md:grid-cols-4">
+          <div className="stroke-3 grid w-full grid-cols-[40%_20%_30%_10%] border-b border-white pb-2 pr-5">
             {/* Logo */}
             <div>
-              <h2 className="mb-2 text-xl font-bold">Event Organizers</h2>
+              <h2 className="ft-title mb-5">Event Organizers</h2>
+              <p className="ft-content mb-2">Logo</p>
             </div>
 
             {/* Pages */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold">Pages</h3>
-              <ul className="mb-2 space-y-1 text-sm text-gray-300">
-                <li>
+            <div className="pr-5">
+              <h3 className="ft-subtitle mb-3">Pages</h3>
+              <ul className="ft-content mb-2 text-gray-300">
+                <li className="mb-4">
                   <Link href="#" className="hover:text-white">
                     Home
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link href="#" className="hover:text-white">
                     Schedule
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link href="#" className="hover:text-white">
                     Format & Rules
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link href="#" className="hover:text-white">
                     Sponsor & Guest
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link href="#" className="hover:text-white">
                     Leaderboard
                   </Link>
@@ -60,18 +61,22 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             </div>
 
             {/* Contact Info */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold">Contact Info</h3>
-              <p className="mb-2 text-sm text-gray-300">
-                Email:{" "}
+            <div className="pr-5">
+              <h3 className="ft-subtitle mb-3">Contact Info</h3>
+              <p className="ft-content mb-2 text-gray-300">
+                Email:
+                <br />
                 <a
                   href="mailto:info@youthdronetournament.com.au"
-                  className="underline hover:text-white"
+                  className="ft-content break-all underline hover:text-white"
                 >
                   info@youthdronetournament.com.au
                 </a>
               </p>
-              <p className="text-sm text-gray-300">
+              <a
+                href="#"
+                className="ft-content text-gray-300 underline hover:text-white"
+              >
                 Venue:
                 <br />
                 Melbourne Convention Centre
@@ -79,25 +84,26 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 1 Convention Centre Pl
                 <br />
                 South Wharf VIC 3006
-              </p>
+              </a>
+              <br />
               <Link
                 href="#"
-                className="text-sm text-gray-300 underline hover:text-white"
+                className="ft-content text-gray-300 underline hover:text-white"
               >
                 Contact Form →
               </Link>
             </div>
 
             {/* Socials */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold">Socials</h3>
-              <ul className="mb-2 space-y-1 text-sm text-gray-300">
-                <li>
+            <div className="pr-5">
+              <h3 className="ft-subtitle mb-3">Socials</h3>
+              <ul className="ft-content mb-2 text-gray-300">
+                <li className="mb-4">
                   <a href="#" className="hover:text-white">
                     Instagram
                   </a>
                 </li>
-                <li>
+                <li className="mb-4">
                   <a href="#" className="hover:text-white">
                     Facebook
                   </a>
@@ -108,7 +114,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
 
           {/* Centered copyright below the line */}
           <div className="pt-2 text-center">
-            <p className="text-sm font-medium text-white">
+            <p className="ft-content text-sm text-white">
               Copyright © 2025 Australia Youth Drone Tournament. All Rights
               Reserved.
             </p>
