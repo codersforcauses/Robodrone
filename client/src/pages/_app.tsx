@@ -12,7 +12,7 @@ const fontMontserrat = Montserrat({
 
 const fontWorkSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-worksans",
 });
 
 const queryClient = new QueryClient();
