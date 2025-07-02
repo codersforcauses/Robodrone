@@ -24,7 +24,9 @@ export default function Home() {
         fontSans.variable,
       )}
     >
-      <h1 className="text-3xl text-primary">Test title</h1>
+      {/* Delete after style testing */}
+      <p className="subtitle text-primary">subtitle with primary colour</p>
+      <h1 className="title-large text-dark">Test Title</h1>
       <Button onClick={() => setClicked(true)}>
         {isLoading ? "Loading" : "Ping"}
       </Button>
