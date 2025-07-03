@@ -27,7 +27,16 @@ export default function LandingPage() {
         location="Melbourne Convention Centre"
         time="5:00pm - 8:00pm"
         description="The first stage of the competition kicks off with teams battling it out in the group round."
-        imageSrc="/placeholder-svg.svg"
+        imageSrc="/drone.svg"
+      />
+
+      <EventCard
+        date="Tuesday - 10 July 2025"
+        title="Knockout Stages Start"
+        location="Murdoch University"
+        time="1:00pm - 4:00pm"
+        description="Knock out each other!"
+        imageSrc="/drone.svg"
       />
     </div>
   );

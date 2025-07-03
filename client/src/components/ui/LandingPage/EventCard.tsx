@@ -18,9 +18,9 @@ export default function EventCard({
   imageSrc,
 }: EventCardProps) {
   return (
-    <div className="flex items-center gap-4 rounded-3xl p-6 outline outline-1 outline-gray-950">
+    <div className="mb-14 flex items-start gap-4 rounded-3xl p-6 outline outline-1 outline-gray-950">
       {/* Text */}
-      <div className="min-w-0 flex-[2] pr-4">
+      <div className="min-w-0 flex-[5] pr-4 pt-2">
         <p className="body-lg mb-1 text-secondary">{date}</p>
         <h2 className="subtitle mb-3">{title}</h2>
         <div className="mb-3 flex items-center gap-2">
@@ -65,7 +65,7 @@ export default function EventCard({
         <p className="line-clamp-3 text-text">{description}</p>
       </div>
       {/* Image */}
-      <div className="relative h-[200px] min-w-[180px] flex-[1]">
+      <div className="relative h-[333px] min-w-[411px] flex-[3]">
         <Image
           src={imageSrc}
           alt="placeholder-svg"
