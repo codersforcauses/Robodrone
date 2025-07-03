@@ -5,11 +5,11 @@ import EventCard from "./EventCard";
 export default function LandingPage() {
   return (
     <div>
-      <h1 className="text-dark text-center text-5xl font-bold">
+      <h1 className="title-large text-center font-bold text-dark">
         {" "}
         Drone Competition Schedule{" "}
       </h1>
-      <div className="relative mx-auto h-[80px] w-[800px]">
+      <div className="relative mx-auto h-[80px] w-[1100px]">
         <Image
           src="/ProgressBar1.svg"
           alt="Progress Bar"
@@ -18,8 +18,8 @@ export default function LandingPage() {
           priority
         />
       </div>
-      <p className="pt-8">Our next competition is: </p>
-      <p className="pb-8 text-2xl font-bold">Monday - July 9th, 2025</p>
+      <p className="medium-lg pt-8">Our next competition is: </p>
+      <p className="subtitle pb-8 font-bold">Monday - July 9th, 2025</p>
 
       <EventCard />
     </div>
