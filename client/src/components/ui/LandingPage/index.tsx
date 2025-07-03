@@ -41,10 +41,10 @@ export default function LandingPage() {
       <EventCard
         date="Wednesday - 11 July 2025"
         title="Finals Day"
-        location="Curtin Stadium"
+        location="Location"
         time="5:00pm - 8:00pm"
         description="The final match to determine the drone champion of 2025!"
-        imageSrc="/drone.svg"
+        //imageSrc="/drone.svg"
       />
     </div>
   );

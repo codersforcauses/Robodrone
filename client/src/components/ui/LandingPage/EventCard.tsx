@@ -6,7 +6,7 @@ type EventCardProps = {
   location: string;
   time: string;
   description: string;
-  imageSrc: string;
+  imageSrc?: string;
 };
 
 export default function EventCard({
@@ -64,16 +64,17 @@ export default function EventCard({
         </div>
         <p className="line-clamp-3 text-text">{description}</p>
       </div>
-      {/* Image */}
-      <div className="relative h-[333px] min-w-[411px] flex-[3]">
-        <Image
-          src={imageSrc}
-          alt="placeholder-svg"
-          fill
-          className="rounded-2xl object-cover"
-          priority
-        />
-      </div>
+      {imageSrc && (
+        <div className="relative h-[333px] min-w-[411px] flex-[3]">
+          <Image
+            src={imageSrc}
+            alt="Event image"
+            fill
+            className="rounded-2xl object-cover"
+            priority
+          />
+        </div>
+      )}
     </div>
   );
 }
