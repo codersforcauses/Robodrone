@@ -26,6 +26,15 @@ export default function Home() {
       )}
     >
       <LandingPage />
+      {/* Delete after style testing */}
+      <p className="subtitle text-primary">subtitle with primary colour</p>
+      <h1 className="title-large text-dark">Test Title</h1>
+      <Button onClick={() => setClicked(true)}>
+        {isLoading ? "Loading" : "Ping"}
+      </Button>
+      <p>
+        Response from server: <span>{data as string}</span>
+      </p>
     </main>
   );
 }
