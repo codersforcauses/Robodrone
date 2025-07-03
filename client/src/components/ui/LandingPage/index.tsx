@@ -21,7 +21,14 @@ export default function LandingPage() {
       <p className="medium-lg pt-8">Our next competition is: </p>
       <p className="subtitle pb-8 font-bold">Monday - July 9th, 2025</p>
 
-      <EventCard />
+      <EventCard
+        date="Monday - 9 July 2025"
+        title="Group Stages Start"
+        location="Melbourne Convention Centre"
+        time="5:00pm - 8:00pm"
+        description="The first stage of the competition kicks off with teams battling it out in the group round."
+        imageSrc="/placeholder-svg.svg"
+      />
     </div>
   );
 }
