@@ -7,6 +7,17 @@ import { FiAlignJustify, FiX } from "react-icons/fi";
 export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  type NavLink = {
+    label: string;
+    href: string;
+  };
+  const navlinks: NavLink[] = [
+    { label: "Home", href: "/" },
+    { label: "Schedule", href: "/schedule" },
+    { label: "Format & Rules", href: "/format-rules" },
+    { label: "Sponsor & Guest", href: "/sponsor-guest" },
+    { label: "Leaderboard", href: "/leaderboard" },
+  ];
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
@@ -27,21 +38,17 @@ export default function Navbar() {
 
         {/* Navbar traversal options container */}
         <div className="hidden items-center gap-8 sm:flex">
-          <Link href="/" className="nav-link-active">
-            Home
-          </Link>
-          <Link href="/schedule" className="nav-link">
-            Schedule
-          </Link>
-          <Link href="/format-rules" className="nav-link text-dark">
-            Format & Rules
-          </Link>
-          <Link href="/sponsor-guest" className="nav-link text-dark">
-            Sponsor & Guest
-          </Link>
-          <Link href="/leaderboard" className="nav-link text-dark">
-            Leaderboard
-          </Link>
+          {navlinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                router.pathname === link.href ? "nav-link-active" : "nav-link"
+              }
+            >
+              {link.label}
+            </Link>
+          ))}
           <div className="mr-10 rounded-2xl bg-primary p-3 px-6 font-semibold text-light">
             View Live Results
           </div>
@@ -63,21 +70,17 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex flex-col py-6">
-          <Link href="/" className="nav-link-active">
-            Home
-          </Link>
-          <Link href="/schedule" className="nav-link">
-            Schedule
-          </Link>
-          <Link href="/format-rules" className="nav-link text-dark">
-            Format & Rules
-          </Link>
-          <Link href="/sponsor-guest" className="nav-link text-dark">
-            Sponsor & Guest
-          </Link>
-          <Link href="/leaderboard" className="nav-link text-dark">
-            Leaderboard
-          </Link>
+          {navlinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                router.pathname === link.href ? "nav-link-active" : "nav-link"
+              }
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </>
