@@ -1,11 +1,11 @@
 import { Inter as FontSans } from "next/font/google";
 import { useState } from "react";
 
-import { Navbar } from "@/components/ui/navbar";
 import { usePings } from "@/hooks/pings";
 import { cn } from "@/lib/utils";
 
 import { Button } from "../components/ui/button";
+import Navbar from "../components/ui/navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],

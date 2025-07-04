@@ -1,20 +1,85 @@
-export function Navbar() {
-  return (
-    <div className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
-      {/* Logo container */}
-      <div className="ml-10 rounded p-2 text-center">LOGO</div>
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { FiAlignJustify, FiX } from "react-icons/fi";
 
-      {/* Navbar traversal options container */}
-      <div className="flex items-center gap-8">
-        <div className="p-2 text-primary">Home</div>
-        <div className="p-2 text-dark">Schedule</div>
-        <div className="p-2 text-dark">Format & Rules</div>
-        <div className="p-2 text-dark">Sponsor & Guest</div>
-        <div className="p-2 text-dark">Leaderboard</div>
-        <div className="mr-10 rounded-2xl bg-primary p-3 px-6 font-semibold text-light">
-          View Live Results
+export default function Navbar() {
+  const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleNav = () => {
+    setMenuOpen(!menuOpen);
+  };
+  return (
+    <>
+      <nav className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
+        {/* Logo container */}
+        {/* <div className="ml-10 rounded p-2 text-center">LOGO</div> */}
+        <div className="relative ml-10 h-10 w-28">
+          <Image
+            className="object-contain"
+            src="https://squadrone.com.au/wp-content/uploads/2024/11/squadrone-logo-01-scaled.webp"
+            alt="Squadrone Logo"
+            width={2560}
+            height={889}
+          />
+        </div>
+
+        {/* Navbar traversal options container */}
+        <div className="hidden items-center gap-8 sm:flex">
+          <Link href="/" className="nav-link-active">
+            Home
+          </Link>
+          <Link href="/schedule" className="nav-link">
+            Schedule
+          </Link>
+          <Link href="/format-rules" className="nav-link text-dark">
+            Format & Rules
+          </Link>
+          <Link href="/sponsor-guest" className="nav-link text-dark">
+            Sponsor & Guest
+          </Link>
+          <Link href="/leaderboard" className="nav-link text-dark">
+            Leaderboard
+          </Link>
+          <div className="mr-10 rounded-2xl bg-primary p-3 px-6 font-semibold text-light">
+            View Live Results
+          </div>
+        </div>
+        <div onClick={handleNav} className="mr-5 cursor-pointer sm:hidden">
+          <FiAlignJustify size={35} />
+        </div>
+      </nav>
+      <div
+        className={
+          menuOpen
+            ? "fixed right-0 top-0 h-screen w-[65%] bg-light p-10 shadow-xl duration-500 ease-out"
+            : "fixed right-[-100%] duration-500 ease-in"
+        }
+      >
+        <div className="flex w-full items-center justify-end">
+          <div onClick={handleNav} className="cursor-pointer">
+            <FiX size={35} />
+          </div>
+        </div>
+        <div className="flex flex-col py-6">
+          <Link href="/" className="nav-link-active">
+            Home
+          </Link>
+          <Link href="/schedule" className="nav-link">
+            Schedule
+          </Link>
+          <Link href="/format-rules" className="nav-link text-dark">
+            Format & Rules
+          </Link>
+          <Link href="/sponsor-guest" className="nav-link text-dark">
+            Sponsor & Guest
+          </Link>
+          <Link href="/leaderboard" className="nav-link text-dark">
+            Leaderboard
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
