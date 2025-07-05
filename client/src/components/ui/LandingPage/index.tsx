@@ -44,7 +44,7 @@ export default function LandingPage() {
         location="Location"
         time="5:00pm - 8:00pm"
         description="The final match to determine the drone champion of 2025!"
-        //imageSrc="/drone.svg"
+        imageSrc="/drone.svg"
       />
     </div>
   );
