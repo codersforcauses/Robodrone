@@ -7,6 +7,9 @@ const isWindowsDevContainer = () =>
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["squadrone.com.au"],
+  },
   reactStrictMode: true,
   // dumb fix for windows docker
   webpack: isWindowsDevContainer()
