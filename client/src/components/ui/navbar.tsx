@@ -48,27 +48,25 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <div className="mr-10 rounded-2xl bg-primary p-3 px-6 font-semibold text-light">
+          <div className="mr-10 rounded-2xl bg-primary px-6 py-3 font-semibold text-light">
             View Live Results
           </div>
         </div>
         {/* Mobile navbar */}
-        <div onClick={handleNav} className="mr-5 cursor-pointer lg:hidden">
+        <button onClick={handleNav} className="mr-5 lg:hidden">
           <FiAlignJustify size={35} />
-        </div>
+        </button>
       </nav>
       <div
         className={
           menuOpen
             ? "fixed right-0 top-0 h-screen w-[65%] bg-light p-10 shadow-xl duration-500 ease-out"
-            : "fixed right-[-100%] duration-500 ease-in"
+            : "fixed -right-full h-screen duration-500 ease-in"
         }
       >
-        <div className="flex w-full items-center justify-end">
-          <div onClick={handleNav} className="cursor-pointer">
-            <FiX size={35} />
-          </div>
-        </div>
+        <button onClick={handleNav} className="ml-auto block">
+          <FiX size={35} />
+        </button>
         <div className="medium-sm flex flex-col gap-4">
           {navlinks.map((link) => (
             <Link
