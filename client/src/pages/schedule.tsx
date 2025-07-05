@@ -5,14 +5,14 @@ import { usePings } from "@/hooks/pings";
 import { cn } from "@/lib/utils";
 
 import { Button } from "../components/ui/button";
-import LandingPage from "../components/ui/LandingPage";
+import SchedulePage from "../components/ui/SchedulePage";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export default function Home() {
+export default function Schedule() {
   const [clicked, setClicked] = useState(false);
   const { data, isLoading } = usePings({
     enabled: clicked,
@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <main
       className={cn(
-        "flex min-h-screen flex-col items-center gap-4 p-24 font-sans",
+        "flex min-h-screen flex-col items-center gap-4 bg-light p-24 font-sans",
         fontSans.variable,
       )}
     >
-      <LandingPage />
+      <SchedulePage />
     </main>
   );
 }

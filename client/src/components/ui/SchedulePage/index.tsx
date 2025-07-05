@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import EventCard from "./EventCard";
 
-export default function LandingPage() {
+export default function SchedulePage() {
   return (
     <div>
       <h1 className="title-large text-center font-bold text-dark">
