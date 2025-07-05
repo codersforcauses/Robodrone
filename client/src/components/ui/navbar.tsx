@@ -25,7 +25,6 @@ export default function Navbar() {
     <>
       <nav className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
         {/* Logo container */}
-        {/* <div className="ml-10 rounded p-2 text-center">LOGO</div> */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
           <Image
             className="object-contain"
@@ -36,7 +35,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Navbar traversal options container */}
+        {/* Navbar options/links container */}
         <div className="hidden items-center gap-8 lg:flex">
           {navlinks.map((link) => (
             <Link
@@ -53,6 +52,7 @@ export default function Navbar() {
             View Live Results
           </div>
         </div>
+        {/* Mobile navbar */}
         <div onClick={handleNav} className="mr-5 cursor-pointer lg:hidden">
           <FiAlignJustify size={35} />
         </div>
