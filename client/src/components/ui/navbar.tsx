@@ -26,7 +26,7 @@ export default function Navbar() {
       <nav className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
         {/* Logo container */}
         {/* <div className="ml-10 rounded p-2 text-center">LOGO</div> */}
-        <div className="relative ml-10 h-10 w-28">
+        <div className="relative mx-10 flex h-10 w-28 items-center">
           <Image
             className="object-contain"
             src="https://squadrone.com.au/wp-content/uploads/2024/11/squadrone-logo-01-scaled.webp"
@@ -37,7 +37,7 @@ export default function Navbar() {
         </div>
 
         {/* Navbar traversal options container */}
-        <div className="hidden items-center gap-8 sm:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navlinks.map((link) => (
             <Link
               key={link.href}
@@ -53,7 +53,7 @@ export default function Navbar() {
             View Live Results
           </div>
         </div>
-        <div onClick={handleNav} className="mr-5 cursor-pointer sm:hidden">
+        <div onClick={handleNav} className="mr-5 cursor-pointer lg:hidden">
           <FiAlignJustify size={35} />
         </div>
       </nav>
@@ -69,7 +69,7 @@ export default function Navbar() {
             <FiX size={35} />
           </div>
         </div>
-        <div className="flex flex-col py-6">
+        <div className="medium-sm flex flex-col gap-4">
           {navlinks.map((link) => (
             <Link
               key={link.href}
