@@ -1,6 +1,86 @@
-// Format & Rules page implementation based on Figma design
+// Format & Rules page implementation - 完整版本 (补充所有遗漏内容)
 import { NextPage } from "next";
 import Head from "next/head";
+
+// 样式常量定义
+const styles = {
+  // 文本样式
+  contentText: "text-base text-neutral-900",
+  sectionTitle: "mb-3 text-lg font-bold text-neutral-900",
+  subsectionTitle: "mb-2 text-base font-bold text-neutral-900",
+
+  // 布局样式
+  listContent: "ml-4 space-y-2 text-base text-neutral-900",
+  listIndented: "ml-8 space-y-1 text-base text-neutral-900",
+  sectionSpacing: "space-y-4",
+  cardSpacing: "space-y-3",
+
+  // 表格样式
+  tableCell: "border border-gray-300 px-2 py-2 text-center",
+  tableCellMedium: "border border-gray-300 px-2 py-2 text-center font-medium",
+  tableCellBold: "border border-gray-300 px-2 py-2 text-center font-bold",
+  tableHeader: "border border-gray-300 px-2 py-2 text-left font-bold",
+
+  // 容器样式
+  pageBackground: "bg-gray-100",
+
+  // 特殊样式
+  importantText: "text-base text-neutral-900 font-medium",
+  warningText: "text-base text-red-600 font-medium",
+} as const;
+
+// 复用组件定义
+interface TextProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const ContentText = ({ children, className = "" }: TextProps) => (
+  <p className={`${styles.contentText} ${className}`}>{children}</p>
+);
+
+const ImportantText = ({ children }: { children: React.ReactNode }) => (
+  <p className={styles.importantText}>{children}</p>
+);
+
+const WarningText = ({ children }: { children: React.ReactNode }) => (
+  <p className={styles.warningText}>{children}</p>
+);
+
+const SectionTitle = ({ children }: { children: React.ReactNode }) => (
+  <h2 className={styles.sectionTitle}>{children}</h2>
+);
+
+const SubsectionTitle = ({ children }: { children: React.ReactNode }) => (
+  <h3 className={styles.subsectionTitle}>{children}</h3>
+);
+
+interface TableCellProps {
+  children: React.ReactNode;
+  variant?: "normal" | "medium" | "bold";
+}
+
+const TableCell = ({ children, variant = "normal" }: TableCellProps) => {
+  const cellStyles = {
+    normal: styles.tableCell,
+    medium: styles.tableCellMedium,
+    bold: styles.tableCellBold,
+  };
+
+  return <td className={cellStyles[variant]}>{children}</td>;
+};
+
+const TableHeader = ({ children }: { children: React.ReactNode }) => (
+  <th className={styles.tableHeader}>{children}</th>
+);
+
+const ListContent = ({ children }: { children: React.ReactNode }) => (
+  <div className={styles.listContent}>{children}</div>
+);
+
+const IndentedList = ({ children }: { children: React.ReactNode }) => (
+  <div className={styles.listIndented}>{children}</div>
+);
 
 const FormatRulesPage: NextPage = () => {
   return (
@@ -13,7 +93,7 @@ const FormatRulesPage: NextPage = () => {
         />
       </Head>
 
-      <div className="min-h-screen" style={{ backgroundColor: "#F5F5F5" }}>
+      <div className={`min-h-screen ${styles.pageBackground}`}>
         {/* Navigation Bar - Placeholder for component developed by others */}
         {/* <Navigation /> */}
         <div className="h-16 border-b bg-white shadow-sm">
@@ -35,422 +115,577 @@ const FormatRulesPage: NextPage = () => {
                 {/* ProgressBar component placeholder */}
               </div>
 
-              <p className="text-base text-neutral-900">
-                Overview of how the competition works. Each match is played
-                between two teams of two students, and the match has two stages.
-              </p>
+              <ContentText>
+                Complete guide to the 2025 WRC Drone Speed Challenge. Each match
+                is a<strong> 3-minute </strong>2v2 team competition with two
+                distinct stages.
+              </ContentText>
             </div>
 
             {/* Content Sections */}
-            <div className="mb-8 space-y-6">
-              {/* Stage 1 - Mission Zone */}
+            <div className={`mb-8 ${styles.sectionSpacing}`}>
+              {/* Competition Overview - 新增章节 */}
               <section>
-                <h2 className="mb-3 text-lg font-bold text-neutral-900">
-                  Stage 1 – Mission Zone
-                </h2>
-                <div className="space-y-3">
-                  <p className="text-base text-neutral-900">
-                    Each team flies their drone in a separate area and tries to{" "}
-                    <strong>knock down six white pins</strong>. These are the
-                    only pins they're meant to hit. If they knock down any of
-                    the yellow pins (called Penalty Pins), they receive time
-                    penalties. After successfully completing the mission, the
-                    drone must <strong>return to the take-off zone</strong>. As
-                    soon as the referee confirms, they can proceed to the next
-                    stage.
-                  </p>
-                </div>
-              </section>
-
-              {/* Stage 2 - Obstacle Zone */}
-              <section>
-                <h2 className="mb-3 text-lg font-bold text-neutral-900">
-                  Stage 2 – Obstacle Zone
-                </h2>
-                <div className="space-y-3">
-                  <p className="text-base text-neutral-900">
-                    Here, both teams fly through a shared course of four
-                    obstacles, each with a different path layout depending on
-                    team colour (Red vs. Blue). The drones race to complete the
-                    obstacle path, and the finishing order determines{" "}
-                    <strong>Honor Points</strong>.
-                  </p>
-                </div>
-              </section>
-
-              {/* Scoring and Ranking System */}
-              <section>
-                <h2 className="mb-3 text-lg font-bold text-neutral-900">
-                  Scoring and Ranking System
-                </h2>
-                <div className="space-y-4">
-                  <p className="text-base text-neutral-900">
-                    Each team is ranked based on the following three layers:
-                  </p>
-
-                  {/* Honor Points */}
+                <SectionTitle>Competition Overview</SectionTitle>
+                <div className={styles.sectionSpacing}>
                   <div>
-                    <h3 className="mb-2 text-base font-bold text-neutral-900">
-                      1. Honor Points – Awarded based on the finish order in the
-                      Obstacle Zone. Higher points go to the faster team.
-                    </h3>
-                    <div className="ml-4 space-y-2">
-                      <p className="text-base text-neutral-900">
-                        Based on the drone's finishing order in the obstacle
-                        course. Higher placement = more points.
-                      </p>
-                      <p className="text-base text-neutral-900">
-                        • <strong>Example:</strong> A team whose drones place
-                        1st and 3rd may earn 2 Honor Points.
-                      </p>
-                      <p className="text-base text-neutral-900">
-                        •{" "}
-                        <strong>
-                          This is the primary method used to rank teams.
-                        </strong>
-                      </p>
-                    </div>
+                    <SubsectionTitle>Venue Specifications</SubsectionTitle>
+                    <ContentText>
+                      <strong>Arena:</strong> 6m x 4m competition field
+                      featuring Mission Zone, Player Movement Zone, Obstacle
+                      Zone, and Takeoff/Landing Zone. Safety barriers surround
+                      the entire arena.
+                    </ContentText>
                   </div>
 
-                  {/* Regular Points */}
                   <div>
-                    <h3 className="mb-2 text-base font-bold text-neutral-900">
-                      2. Regular Points – These are calculated as:
-                    </h3>
-                    <div className="ml-4 space-y-2">
-                      <p className="text-base text-neutral-900">
-                        Used only if teams are tied in Honor Points. Regular
-                        Points are calculated as:
-                      </p>
-                      <ul className="space-y-1 text-base text-neutral-900">
-                        <li>• +2 points for every white pin knocked down</li>
-                        <li>
-                          • –3 points for each yellow pin hit (Penalty Pin)
-                        </li>
-                        <li>• –3 points for a yellow card</li>
-                        <li>• –10 points for a red card</li>
-                      </ul>
-                    </div>
+                    <SubsectionTitle>Match Duration</SubsectionTitle>
+                    <ContentText>
+                      Each match lasts <strong>3 minutes</strong>. If the match
+                      ends in a tie, a <strong>1-minute overtime</strong> is
+                      held where the first drone to complete Obstacle D wins.
+                    </ContentText>
+                  </div>
+
+                  <div>
+                    <SubsectionTitle>Competition Stages</SubsectionTitle>
+                    <ContentText>
+                      <strong>1. Group Round-Robin:</strong> Teams divided into
+                      groups of 4, each team plays every other team once (6
+                      matches per group)
+                    </ContentText>
+                    <ContentText>
+                      <strong>2. Tie-Breaking Stage:</strong> Additional matches
+                      if the number of group winners is not a power of 2 (e.g.,
+                      reducing 10 teams to 8)
+                    </ContentText>
+                    <ContentText>
+                      <strong>3. Elimination Stage:</strong> Single-elimination
+                      tournament format
+                    </ContentText>
+                  </div>
+                </div>
+              </section>
+
+              {/* Equipment Requirements - 新增章节 */}
+              <section>
+                <SectionTitle>Equipment Requirements</SectionTitle>
+                <div className={styles.cardSpacing}>
+                  <ContentText>
+                    All teams must bring their own drones meeting these
+                    specifications:
+                  </ContentText>
+                  <ul className={styles.listContent}>
+                    <li className={styles.contentText}>
+                      • <strong>Aircraft model:</strong> Quadcopter (four
+                      rotors)
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Aircraft wheelbase:</strong> Maximum 180mm
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Flight time:</strong> At least 5 minutes
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Takeoff weight:</strong> Less than 250g
+                      (including protective guard and battery)
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Protection design:</strong> Fully enclosed
+                      protective guard for flight safety
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Control method:</strong> Must be controlled via
+                      physical remote controller
+                    </li>
+                  </ul>
+                  <WarningText>
+                    All equipment will be inspected by organizers before
+                    competition.
+                  </WarningText>
+                </div>
+              </section>
+
+              {/* Stage 1 - Mission Zone (Updated) */}
+              <section>
+                <SectionTitle>Stage 1 – Mission Zone</SectionTitle>
+                <div className={styles.cardSpacing}>
+                  <ContentText>
+                    Each team flies their drone in a separate area and tries to{" "}
+                    <strong>knock down all 6 white pins</strong>. These are the
+                    only pins they're meant to hit. After successfully
+                    completing the mission, the drone must{" "}
+                    <strong>return to the take-off zone</strong> and notify the
+                    referee.
+                  </ContentText>
+
+                  <div>
+                    <SubsectionTitle>
+                      Penalty Pins and Time Penalties
+                    </SubsectionTitle>
+                    <ContentText>
+                      If they knock down any of the 6 yellow pins (Penalty
+                      Pins), they receive:
+                    </ContentText>
+                    <IndentedList>
+                      <ContentText>
+                        • <strong>-3 points</strong> for each yellow pin hit
+                      </ContentText>
+                      <ContentText>
+                        • <strong>5-second time penalty</strong> - drone must
+                        land in takeoff zone and remain there for 5 seconds
+                        before continuing
+                      </ContentText>
+                      <ContentText>
+                        • Penalty time starts when referee announces "Penalty
+                        Start" and ends with "Penalty Over"
+                      </ContentText>
+                    </IndentedList>
+                  </div>
+
+                  <div>
+                    <SubsectionTitle>Mission Completion</SubsectionTitle>
+                    <ContentText>
+                      Teams must notify the referee upon mission completion.
+                      Only after referee confirmation can they proceed to Stage
+                      2. The first team to complete moves to the Obstacle Zone.
+                    </ContentText>
+                  </div>
+                </div>
+              </section>
+
+              {/* Special Touch Opportunity - 新增章节 */}
+              <section>
+                <SectionTitle>Special Touch Opportunity</SectionTitle>
+                <div className={styles.cardSpacing}>
+                  <ImportantText>
+                    Each participant has{" "}
+                    <strong>ONE opportunity per match</strong> to intentionally
+                    enter the competition zone and touch their drone.
+                  </ImportantText>
+
+                  <ContentText>Rules for Special Touch:</ContentText>
+                  <ul className={styles.listContent}>
+                    <li className={styles.contentText}>
+                      • Must <strong>raise hand to signal</strong> before
+                      entering the zone
+                    </li>
+                    <li className={styles.contentText}>
+                      • Must{" "}
+                      <strong>immediately return to operator area</strong> after
+                      touching the drone
+                    </li>
+                    <li className={styles.contentText}>
+                      • Can be used to adjust drone position, remove obstacles,
+                      etc.
+                    </li>
+                    <li className={styles.contentText}>
+                      • <strong>Cannot be used</strong> to move objects,
+                      interfere with mission, or disrupt opponents
+                    </li>
+                    <li className={styles.warningText}>
+                      • <strong>NOT allowed in Obstacle Zone</strong>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+
+              {/* Stage 2 - Obstacle Zone (Updated) */}
+              <section>
+                <SectionTitle>Stage 2 – Obstacle Zone</SectionTitle>
+                <div className={styles.cardSpacing}>
+                  <ContentText>
+                    Both teams navigate through a shared course of four
+                    obstacles (A, B, C, D) following different paths based on
+                    team color. The finishing order determines{" "}
+                    <strong>Honor Points</strong>.
+                  </ContentText>
+
+                  <div>
+                    <SubsectionTitle>Team Paths</SubsectionTitle>
+                    <ContentText>
+                      <strong>Red Team Path:</strong> B → A → C → D
+                    </ContentText>
+                    <ContentText>
+                      <strong>Blue Team Path:</strong> A → B → C → D
+                    </ContentText>
+                    <ContentText>
+                      <strong>Point D is the finish line.</strong> Rankings are
+                      based on the order drones pass through Obstacle D.
+                    </ContentText>
+                  </div>
+
+                  <div>
+                    <SubsectionTitle>Strategic Rules</SubsectionTitle>
+                    <ContentText>
+                      Teams may strategically disrupt opponent flight paths
+                      using drone maneuvers, but{" "}
+                      <strong>physical interference</strong> (blocking with
+                      hands or objects) is <strong>strictly prohibited</strong>{" "}
+                      and results in a red card (disqualification).
+                    </ContentText>
+                    <WarningText>
+                      No Special Touch Opportunity is allowed in the Obstacle
+                      Zone.
+                    </WarningText>
+                  </div>
+                </div>
+              </section>
+
+              {/* Scoring and Ranking System (Updated) */}
+              <section>
+                <SectionTitle>Scoring and Ranking System</SectionTitle>
+                <div className={styles.sectionSpacing}>
+                  <ImportantText>
+                    Teams are ranked using{" "}
+                    <strong>three criteria in this exact order:</strong>
+                    <br />
+                    1. Honor Points → 2. Regular Points → 3. Mission Zone Time
+                  </ImportantText>
+
+                  {/* Honor Points (Updated) */}
+                  <div>
+                    <SubsectionTitle>
+                      1. Honor Points – Based on Obstacle Zone finishing order
+                    </SubsectionTitle>
+                    <ListContent>
+                      <ContentText>
+                        Awarded according to the combination of drone finishing
+                        positions in Obstacle Zone:
+                      </ContentText>
+                    </ListContent>
+                  </div>
+
+                  {/* Regular Points (Updated) */}
+                  <div>
+                    <SubsectionTitle>
+                      2. Regular Points – Used if Honor Points are tied
+                    </SubsectionTitle>
+                    <ListContent>
+                      <ContentText>Calculated as follows:</ContentText>
+                      <IndentedList>
+                        <ContentText>
+                          • <strong>+2 points</strong> per white pin knocked
+                          down
+                        </ContentText>
+                        <ContentText>
+                          • <strong>-3 points</strong> per yellow pin hit
+                          (penalty pins)
+                        </ContentText>
+                        <ContentText>
+                          • <strong>-3 points</strong> per yellow card received
+                        </ContentText>
+                        <ContentText>
+                          • <strong>-10 points</strong> per red card received
+                        </ContentText>
+                      </IndentedList>
+                    </ListContent>
                   </div>
 
                   {/* Mission Zone Time */}
                   <div>
-                    <h3 className="mb-2 text-base font-bold text-neutral-900">
-                      3. Mission Zone Time – The total time to complete the
-                      Mission Zone including penalties. This is only used if
-                      teams are tied on both Honor and Regular Points.
-                    </h3>
-                    <div className="ml-4">
-                      <p className="text-base text-neutral-900">
-                        If Honor and Regular Points are still tied, the team
-                        with the faster adjusted time (including penalty
-                        seconds) in the Mission Zone is ranked higher.
-                      </p>
+                    <SubsectionTitle>
+                      3. Mission Zone Time – Final tiebreaker
+                    </SubsectionTitle>
+                    <ListContent>
+                      <ContentText>
+                        If both Honor and Regular Points are tied, the team with
+                        faster
+                        <strong> Mission Zone completion time</strong>{" "}
+                        (including all penalty seconds) is ranked higher.
+                      </ContentText>
+                    </ListContent>
+                  </div>
+
+                  {/* Honor Points Table */}
+                  <div className="mt-6">
+                    <SubsectionTitle>Honor Points Award Table:</SubsectionTitle>
+                    <div className="overflow-x-auto">
+                      <table className="w-full border border-gray-300 text-sm text-neutral-900">
+                        <thead className="bg-gray-100">
+                          <tr>
+                            <TableHeader>Rank Combination</TableHeader>
+                            <TableHeader>Honor Points</TableHeader>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <TableCell variant="medium">
+                              1st place (solo)
+                            </TableCell>
+                            <TableCell>1 point</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              1st & 2nd place (team)
+                            </TableCell>
+                            <TableCell>3 points</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              1st & 3rd place (team)
+                            </TableCell>
+                            <TableCell>2 points</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              1st & 4th place (team)
+                            </TableCell>
+                            <TableCell>1 point</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              2nd & 3rd place (team)
+                            </TableCell>
+                            <TableCell>0 points</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              2nd & 4th place (team)
+                            </TableCell>
+                            <TableCell>0 points</TableCell>
+                          </tr>
+                          <tr>
+                            <TableCell variant="medium">
+                              3rd & 4th place (team)
+                            </TableCell>
+                            <TableCell>0 points</TableCell>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
 
                   {/* Scoring Example Table */}
                   <div className="mt-6">
-                    <h3 className="mb-3 text-base font-bold text-neutral-900">
-                      Scoring Example:
-                    </h3>
+                    <SubsectionTitle>Scoring Example:</SubsectionTitle>
                     <div className="overflow-x-auto">
                       <table className="w-full border border-gray-300 text-sm text-neutral-900">
                         <thead className="bg-gray-100">
                           <tr>
-                            <th className="border border-gray-300 px-2 py-2 text-left font-bold">
-                              Team Name
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            <TableHeader>Team Name</TableHeader>
+                            <TableHeader>
                               Honor Points
                               <br />
                               <span className="text-xs font-normal">
                                 (Based on obstacle finish)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               White Pins
                               <br />
                               <span className="text-xs font-normal">
                                 (+2 pts each)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               Penalty Pins Hit
                               <br />
                               <span className="text-xs font-normal">
                                 (-3 pts each)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               Yellow Cards
                               <br />
                               <span className="text-xs font-normal">
                                 (-3 pts each)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               Red Cards
                               <br />
                               <span className="text-xs font-normal">
                                 (-10 pts each)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               Regular Points
                               <br />
                               <span className="text-xs font-normal">
                                 (Total from above)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
+                            </TableHeader>
+                            <TableHeader>
                               Mission Time (s)
                               <br />
                               <span className="text-xs font-normal">
                                 (incl. penalties)
                               </span>
-                            </th>
-                            <th className="border border-gray-300 px-2 py-2 text-center font-bold">
-                              Total Rank
+                            </TableHeader>
+                            <TableHeader>
+                              Final Rank
                               <br />
                               <span className="text-xs font-normal">
                                 (Final position)
                               </span>
-                            </th>
+                            </TableHeader>
                           </tr>
                         </thead>
                         <tbody>
                           <tr className="bg-green-50">
-                            <td className="border border-gray-300 px-2 py-2 font-medium">
-                              Red Falcons
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              3
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              6
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-medium">
-                              12
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              55
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-bold">
-                              1
-                            </td>
+                            <TableCell variant="medium">Red Falcons</TableCell>
+                            <TableCell>3</TableCell>
+                            <TableCell>6</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell variant="medium">12</TableCell>
+                            <TableCell>55</TableCell>
+                            <TableCell variant="bold">1</TableCell>
                           </tr>
                           <tr>
-                            <td className="border border-gray-300 px-2 py-2 font-medium">
-                              Blue Hawks
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              2
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              6
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-medium">
-                              6
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              60
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-bold">
-                              2
-                            </td>
+                            <TableCell variant="medium">Blue Hawks</TableCell>
+                            <TableCell>2</TableCell>
+                            <TableCell>6</TableCell>
+                            <TableCell>1</TableCell>
+                            <TableCell>1</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell variant="medium">6</TableCell>
+                            <TableCell>60</TableCell>
+                            <TableCell variant="bold">2</TableCell>
                           </tr>
                           <tr>
-                            <td className="border border-gray-300 px-2 py-2 font-medium">
+                            <TableCell variant="medium">
                               Silver Sparks
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              5
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-medium">
-                              7
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              58
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-bold">
-                              3
-                            </td>
+                            </TableCell>
+                            <TableCell>1</TableCell>
+                            <TableCell>5</TableCell>
+                            <TableCell>1</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell variant="medium">7</TableCell>
+                            <TableCell>58</TableCell>
+                            <TableCell variant="bold">3</TableCell>
                           </tr>
                           <tr>
-                            <td className="border border-gray-300 px-2 py-2 font-medium">
+                            <TableCell variant="medium">
                               Golden Drones
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              4
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              2
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              0
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-medium">
-                              -1
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center">
-                              65
-                            </td>
-                            <td className="border border-gray-300 px-2 py-2 text-center font-bold">
-                              4
-                            </td>
+                            </TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell>4</TableCell>
+                            <TableCell>2</TableCell>
+                            <TableCell>1</TableCell>
+                            <TableCell>0</TableCell>
+                            <TableCell variant="medium">-1</TableCell>
+                            <TableCell>65</TableCell>
+                            <TableCell variant="bold">4</TableCell>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-                    <p className="mt-2 text-sm text-neutral-900">
+                    <ContentText className="mt-2 text-sm">
                       <strong>Note:</strong> Red Falcons won due to highest
                       Honor Points (3). Even though Silver Sparks had higher
                       Regular Points (7) than Blue Hawks (6), Blue Hawks ranked
                       higher due to better Honor Points (2 vs 1).
-                    </p>
+                    </ContentText>
                   </div>
                 </div>
               </section>
 
-              {/* How the rank is determined */}
+              {/* Violations and Penalties (Updated) */}
               <section>
-                <h2 className="mb-3 text-lg font-bold text-neutral-900">
-                  How the rank is determined:
-                </h2>
-                <div className="space-y-4">
-                  <h3 className="text-base font-bold text-neutral-900">
-                    Scoring System
-                  </h3>
-                  <p className="text-base text-neutral-900">
-                    Each team's performance is ranked based on{" "}
-                    <strong>three criteria</strong>, used in this exact order:
-                  </p>
-
-                  <div className="space-y-3">
-                    <div>
-                      <h4 className="text-base font-bold text-neutral-900">
-                        1. Honor Points
-                      </h4>
-                      <p className="ml-4 text-base text-neutral-900">
-                        Based on the drone's finishing order in the obstacle
-                        course. Higher placement = more points.
-                      </p>
-                      <div className="ml-4 space-y-1 text-base text-neutral-900">
-                        <p>
-                          • Example: A team whose drones place 1st and 3rd may
-                          earn 2 Honor Points.
-                        </p>
-                        <p>• This is the primary method used to rank teams.</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-base font-bold text-neutral-900">
-                        2. Regular Points
-                      </h4>
-                      <p className="ml-4 text-base text-neutral-900">
-                        Used only if teams are tied in Honor Points. Regular
-                        Points are calculated as:
-                      </p>
-                      <div className="ml-8 space-y-1 text-base text-neutral-900">
-                        <p>• +2 points per white pin knocked down</p>
-                        <p>• –3 points per yellow pin hit (penalty pins)</p>
-                        <p>
-                          • –3 points per yellow card (minor rule violation)
-                        </p>
-                        <p>• –10 points per red card (serious violation)</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-base font-bold text-neutral-900">
-                        3. Mission Zone Completion Time
-                      </h4>
-                      <p className="ml-4 text-base text-neutral-900">
-                        If Honor and Regular Points are still tied, the team
-                        with the faster adjusted time (including penalty
-                        seconds) in the Mission Zone is ranked higher.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Penalties */}
-              <section>
-                <h2 className="mb-3 text-lg font-bold text-neutral-900">
-                  Penalties – When Cards Are Issued
-                </h2>
-                <div className="space-y-4">
+                <SectionTitle>Violations and Penalties</SectionTitle>
+                <div className={styles.sectionSpacing}>
                   <div>
-                    <h3 className="mb-2 text-base font-bold text-neutral-900">
-                      Yellow Cards (–3 pts) are issued for minor infractions
-                      like:
-                    </h3>
-                    <ul className="ml-4 space-y-1 text-base text-neutral-900">
-                      <li>◦ Stepping into the arena without permission</li>
-                      <li>
-                        ◦ Knocking over field barriers or obstacles by accident
+                    <SubsectionTitle>
+                      Yellow Cards (–3 pts) are issued for minor infractions:
+                    </SubsectionTitle>
+                    <ul className={styles.listContent}>
+                      <li className={styles.contentText}>
+                        ◦ Deliberately crossing into restricted zones or using
+                        body/objects to touch or block opponent drones
                       </li>
-                      <li>◦ Ignoring referee warnings</li>
+                      <li className={styles.contentText}>
+                        ◦ Accidentally knocking over obstacles in mission zone
+                        (must restore to original position)
+                      </li>
+                      <li className={styles.contentText}>
+                        ◦ Crossing into restricted areas and interfering with
+                        opponents
+                      </li>
+                      <li className={styles.contentText}>
+                        ◦ Ignoring referee warnings or inappropriate behavior
+                      </li>
+                      <li className={styles.contentText}>
+                        ◦ Disputing match results without valid grounds (after
+                        written appeal review)
+                      </li>
                     </ul>
+                    <WarningText>
+                      Each team allowed up to 2 yellow card warnings. Third
+                      yellow card = red card.
+                    </WarningText>
                   </div>
 
                   <div>
-                    <h3 className="mb-2 text-base font-bold text-neutral-900">
-                      Red Cards (–10 pts) are given for serious violations like:
-                    </h3>
-                    <ul className="ml-4 space-y-1 text-base text-neutral-900">
-                      <li>◦ Deliberately crashing into an opponent</li>
-                      <li>◦ Using hands to block drones</li>
-                      <li>◦ Modifying the drone outside approved specs</li>
+                    <SubsectionTitle>
+                      Red Cards (–10 pts) are given for serious violations:
+                    </SubsectionTitle>
+                    <ul className={styles.listContent}>
+                      <li className={styles.contentText}>
+                        ◦ Intentionally controlling drone to crash into field
+                        structures, spectators, or unrelated individuals
+                      </li>
+                      <li className={styles.contentText}>
+                        ◦ Using unauthorized modifications or external signal
+                        devices to interfere with match
+                      </li>
+                      <li className={styles.contentText}>
+                        ◦ Physical interference like blocking with hands or
+                        objects (automatic disqualification)
+                      </li>
                     </ul>
+                    <WarningText>
+                      Red card = immediate stop of drone operation. Another team
+                      member may take over unless drone is in dangerous position
+                      (referee decision).
+                    </WarningText>
                   </div>
+                </div>
+              </section>
+
+              {/* Safety Guidelines - 新增章节 */}
+              <section>
+                <SectionTitle>Safety Guidelines</SectionTitle>
+                <div className={styles.cardSpacing}>
+                  <ImportantText>
+                    Safety is our top priority. All participants must:
+                  </ImportantText>
+                  <ul className={styles.listContent}>
+                    <li className={styles.contentText}>
+                      • Carefully read and follow drone user manual and safety
+                      procedures before operation
+                    </li>
+                    <li className={styles.contentText}>
+                      • Stay behind safety barriers when not competing -
+                      spectators and non-participants must remain behind
+                      barriers at all times
+                    </li>
+                    <li className={styles.contentText}>
+                      • Immediately stop drone operation if malfunction occurs
+                      or safety risk is detected
+                    </li>
+                    <li className={styles.contentText}>
+                      • Follow safety instructions from on-site personnel
+                      immediately
+                    </li>
+                    <li className={styles.warningText}>
+                      • Never operate drones or related equipment near the venue
+                      without permission
+                    </li>
+                  </ul>
                 </div>
               </section>
 
               {/* Focus Statement */}
               <section>
-                <p className="text-base font-medium text-neutral-900">
+                <ImportantText>
                   Focus on safety, fair play, and showcasing technical skills.
-                </p>
+                  Good sportsmanship and respect for referees and opponents are
+                  essential.
+                </ImportantText>
               </section>
             </div>
 
