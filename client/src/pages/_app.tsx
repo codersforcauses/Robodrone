@@ -3,15 +3,12 @@ import "@/styles/globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
-
 import { Montserrat, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
-
 
 const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
-
 
 const fontPlusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
