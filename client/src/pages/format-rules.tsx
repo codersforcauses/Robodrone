@@ -1,35 +1,40 @@
-// Format & Rules page implementation - 完整版本 (补充所有遗漏内容)
+// Format & Rules page implementation - Complete version with all missing content
 import { NextPage } from "next";
 import Head from "next/head";
 
-// 样式常量定义
+import { Footer } from "../components/ui/footer";
+import CheckList from "../components/ui/FormatRules/CheckList";
+import Navbar from "../components/ui/navbar";
+import ProgressBar from "../components/ui/progress";
+
+// Style constants definition
 const styles = {
-  // 文本样式
+  // Text styles
   contentText: "text-base text-neutral-900",
   sectionTitle: "mb-3 text-lg font-bold text-neutral-900",
   subsectionTitle: "mb-2 text-base font-bold text-neutral-900",
 
-  // 布局样式
+  // Layout styles
   listContent: "ml-4 space-y-2 text-base text-neutral-900",
   listIndented: "ml-8 space-y-1 text-base text-neutral-900",
   sectionSpacing: "space-y-4",
   cardSpacing: "space-y-3",
 
-  // 表格样式
+  // Table styles
   tableCell: "border border-gray-300 px-2 py-2 text-center",
   tableCellMedium: "border border-gray-300 px-2 py-2 text-center font-medium",
   tableCellBold: "border border-gray-300 px-2 py-2 text-center font-bold",
   tableHeader: "border border-gray-300 px-2 py-2 text-left font-bold",
 
-  // 容器样式
+  // Container styles
   pageBackground: "bg-gray-100",
 
-  // 特殊样式
+  // Special styles
   importantText: "text-base text-neutral-900 font-medium",
   warningText: "text-base text-red-600 font-medium",
 } as const;
 
-// 复用组件定义
+// Reusable component definitions
 interface TextProps {
   children: React.ReactNode;
   className?: string;
@@ -94,26 +99,16 @@ const FormatRulesPage: NextPage = () => {
       </Head>
 
       <div className={`min-h-screen ${styles.pageBackground}`}>
-        {/* Navigation Bar - Placeholder for component developed by others */}
-        {/* <Navigation /> */}
-        <div className="h-16 border-b bg-white shadow-sm">
-          {/* Navigation component placeholder */}
-        </div>
+        {/* Navigation Bar */}
+        <Navbar />
 
-        {/* Main Content */}
-        <main className="container mx-auto px-4 py-8">
+        {/* Main Content - Add pt-20 to avoid being blocked by fixed navbar */}
+        <main className="container mx-auto px-4 py-8 pt-20">
           <div className="mx-auto max-w-3xl">
             {/* Hero Section */}
             <div className="mb-8 text-center">
-              <h1 className="mb-4 text-4xl font-bold text-neutral-900">
-                Format & Rules
-              </h1>
-
-              {/* ProgressBar - Placeholder for component developed by others */}
-              {/* <ProgressBar /> */}
-              <div className="mb-4">
-                {/* ProgressBar component placeholder */}
-              </div>
+              {/* ProgressBar Component replaces the title */}
+              <ProgressBar pageName="format-rules" />
 
               <ContentText>
                 Complete guide to the 2025 WRC Drone Speed Challenge. Each match
@@ -124,7 +119,7 @@ const FormatRulesPage: NextPage = () => {
 
             {/* Content Sections */}
             <div className={`mb-8 ${styles.sectionSpacing}`}>
-              {/* Competition Overview - 新增章节 */}
+              {/* Competition Overview Section */}
               <section>
                 <SectionTitle>Competition Overview</SectionTitle>
                 <div className={styles.sectionSpacing}>
@@ -167,7 +162,7 @@ const FormatRulesPage: NextPage = () => {
                 </div>
               </section>
 
-              {/* Equipment Requirements - 新增章节 */}
+              {/* Equipment Requirements Section */}
               <section>
                 <SectionTitle>Equipment Requirements</SectionTitle>
                 <div className={styles.cardSpacing}>
@@ -254,7 +249,7 @@ const FormatRulesPage: NextPage = () => {
                 </div>
               </section>
 
-              {/* Special Touch Opportunity - 新增章节 */}
+              {/* Special Touch Opportunity Section */}
               <section>
                 <SectionTitle>Special Touch Opportunity</SectionTitle>
                 <div className={styles.cardSpacing}>
@@ -646,7 +641,7 @@ const FormatRulesPage: NextPage = () => {
                 </div>
               </section>
 
-              {/* Safety Guidelines - 新增章节 */}
+              {/* Safety Guidelines Section */}
               <section>
                 <SectionTitle>Safety Guidelines</SectionTitle>
                 <div className={styles.cardSpacing}>
@@ -689,19 +684,13 @@ const FormatRulesPage: NextPage = () => {
               </section>
             </div>
 
-            {/* CheckList Section - Placeholder for component developed by others */}
-            {/* <CheckList /> */}
-            <section className="min-h-64 rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
-              {/* CheckList component placeholder */}
-            </section>
+            {/* CheckList Section */}
+            <CheckList />
           </div>
         </main>
 
-        {/* Footer - Placeholder for component developed by others */}
-        {/* <Footer /> */}
-        <footer className="min-h-80 bg-gray-900 text-white">
-          {/* Footer component placeholder */}
-        </footer>
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   );
