@@ -110,39 +110,39 @@
   .bg-light {
     @apply bg-white;
   }
-  
+
   .text-light {
     @apply text-white;
   }
-  
+
   .bg-primary {
     @apply bg-blue-600;
   }
-  
+
   /* Navigation link styles */
   .nav-link {
-    @apply text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm font-medium;
+    @apply text-sm font-medium text-gray-700 transition-colors duration-200 hover:text-blue-600;
   }
-  
+
   .nav-link-active {
-    @apply text-blue-600 font-semibold text-sm border-b-2 border-blue-600 pb-1;
+    @apply border-b-2 border-blue-600 pb-1 text-sm font-semibold text-blue-600;
   }
 
   /* Footer related styles */
   .ft-title {
-    @apply text-xl font-bold text-white mb-4;
+    @apply mb-4 text-xl font-bold text-white;
   }
-  
+
   .ft-subtitle {
-    @apply text-lg font-semibold text-white mb-2;
+    @apply mb-2 text-lg font-semibold text-white;
   }
-  
+
   .ft-content {
-    @apply text-sm text-gray-300 leading-relaxed;
+    @apply text-sm leading-relaxed text-gray-300;
   }
 
   /* Enhanced button styles */
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold transition-colors duration-200;
+    @apply rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-blue-700;
   }
 }
