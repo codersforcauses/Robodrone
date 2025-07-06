@@ -1,12 +1,46 @@
 import { Montserrat } from "next/font/google";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import SponsorSection from "@/components/SponsorsGuests";
+
+type Partner = {
+  name: string;
+  logo: string;
+  link: string;
+};
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
 
 const SponsorsAndGuest = () => {
+  const [partners, setPartners] = useState<Partner[]>([]); // Holds sponsor data
+  const [loading, setLoading] = useState(true); // Controls loading state
+
+  useEffect(() => {
+    // Define an async function to fetch data
+    const fetchPartners = async () => {
+      try {
+        // Send request to backend (asynchronous)
+        const res = await fetch("/api/partners");
+
+        // Wait for JSON response (also asynchronous)
+        const data = await res.json();
+
+        // Update state with the fetched partners
+        setPartners(data.partners || []);
+      } catch (error) {
+        console.error("Error fetching partners:", error);
+      } finally {
+        // Hide the loading state regardless of success/failure
+        setLoading(false);
+      }
+    };
+
+    // Call the async function when component mounts
+    fetchPartners();
+  }, []); // Only runs once when the component is first rendered
+
   return (
     // MAIN CONTAINER
     <div className="min-h-screen bg-background">
@@ -124,6 +158,15 @@ const SponsorsAndGuest = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* SPONSORS SECTION */}
+      <div className="mt-16">
+        {loading ? (
+          <p className="text-center text-gray-500">Loading sponsors...</p>
+        ) : (
+          // Pass the fetched data to the SponsorSection component
+          <SponsorSection partners={partners} />
+        )}
       </div>
     </div>
   );
