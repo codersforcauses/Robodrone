@@ -37,20 +37,28 @@ export default function Navbar() {
 
         {/* Navbar options/links container */}
         <div className="hidden items-center gap-8 lg:flex">
-          {navlinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={
-                router.pathname === link.href ? "nav-link-active" : "nav-link"
-              }
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="mr-10 rounded-2xl bg-primary px-6 py-3 font-semibold text-light">
-            View Live Results
-          </div>
+          {navlinks.map((link) => {
+            if (link.label === "Leaderboard") {
+              return (
+                <Link key={link.href} href={link.href}>
+                  <button className="btn-primary mr-10">
+                    View Leaderboard
+                  </button>
+                </Link>
+              );
+            }
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={
+                  router.pathname === link.href ? "nav-link-active" : "nav-link"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
         {/* Mobile navbar */}
         <button onClick={handleNav} className="mr-5 lg:hidden">

@@ -108,4 +108,10 @@
   .nav-link-active {
     @apply text-primary;
   }
+  .btn-primary {
+    @apply rounded-2xl border-2 border-transparent bg-primary px-5 py-2 text-light transition duration-300;
+  }
+  .btn-primary:hover {
+    @apply border-primary bg-transparent text-primary;
+  }
 }
