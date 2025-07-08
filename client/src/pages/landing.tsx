@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Landing() {
   return (
     /* trying to create hero section between nav bar and running add*/
@@ -39,8 +41,8 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* 3 cards is a separate sections because of my difficulties animating rnnig add inside the section, prob because of cente text */}
-      <section className="bg-background px-6 py-16 text-center text-foreground">
+      {/* 3 cards is a separate sections because of my difficulties animating runnig add inside the section, prob because of cente text */}
+      <section className="bg-background bg-gray-100 px-6 py-16 text-center text-foreground dark:bg-muted">
         {" "}
         {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
@@ -52,16 +54,88 @@ export default function Landing() {
           Fostering STEM skills through competitive drone racing, teamwork, and
           strategic thinking
         </p>
+        {/*Using grid layout to have thre containers, one for each square*/}
+        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
+          {" "}
+          {/*stacking vertically 1 card at the time on smaller screens and centering the grid */}
+          <div className="rounded-xl bg-white p-6 shadow dark:bg-muted">
+            <div className="mb-4 text-primary">
+              <span className="text-4xl"></span>
+            </div>
+            <h3 className="mb-2 text-xl font-semibold">The Challenge</h3>
+            <p className="mb-4 text-sm">
+              2v2 team-based format featuring Mission Zone precision and
+              Obstacle Zone speed challenges. Teams must strategize and execute
+              flawlessly.
+            </p>
+            <a href="#" className="font-medium text-primary">
+              Learn More About the Event →
+            </a>
+          </div>
+          <div className="rounded-xl bg-white p-6 shadow dark:bg-muted">
+            <div className="mb-4 text-primary">
+              <span className="text-4xl"></span>
+            </div>
+            <h3 className="mb-2 text-xl font-semibold">The Schedule</h3>
+            <p className="mb-4 text-sm">
+              March 15-16: Group Stages March 17: Finals Day Venue: Melbourne
+              Convention Centre
+            </p>
+            <a href="#" className="font-medium text-primary">
+              View Full Schedule →
+            </a>
+          </div>
+          <div className="rounded-xl bg-white p-6 shadow dark:bg-muted">
+            <div className="mb-4 text-primary">
+              <span className="text-4xl"></span>
+            </div>
+            <h3 className="mb-2 text-xl font-semibold">The Rules</h3>
+            <p className="mb-4 text-sm">
+              Teams bring their own drones (less than 250g, fully enclosed
+              guard). Focus on safety, fair play, and showcasing technical
+              skills.
+            </p>
+            <a href="#" className="font-medium text-primary">
+              Download Rules And Manual →
+            </a>
+          </div>
+        </div>
       </section>
 
-      <div className="container mx-auto px-4">
-        {" "}
-        {/* mx-auto class centers the containers horizontally within the viewport - this part will be used for 2 sections on top of the drone's photo 'view life leaderboard' and 'see the schedule'*/}
-        <h1 className="text-2x1 font-bold">
-          {" "}
-          {/* Container for the main body with 3 fieldsets, the challenge, the schedule the rules and the  */}
-        </h1>
-      </div>
+      <section className="bg-white px-6 py-20 text-center">
+        <h2 className="mb-2 text-3xl font-bold">
+          Powered By Our{" "}
+          <span className="text-orange-400 text-primary">Partners</span>
+        </h2>
+        <p className="mb-12 text-muted-foreground">
+          Supporting the next generation of innovators and engineers
+        </p>
+
+        <div className="bg-grey/20 mb-16 flex flex-wrap items-center justify-center gap-8">
+          {/*I get warning when I try to use img tag, is there another way that you would prefere it? do we need alt for search engines*/}
+          <Image
+            src="../aicodeLogo.png"
+            alt="AICodeLogo"
+            className="inset-0 h-12 hover:scale-110"
+          />
+          <Image
+            src="../squadroneLogo.png"
+            alt="SquadroneLogo"
+            className="inset-0 h-12 hover:scale-110"
+          />
+        </div>
+
+        <div className="mx-auto max-w-3xl rounded-xl bg-gray-100/60 px-6 py-8 text-sm text-muted-foreground dark:bg-muted">
+          <p className="mb-2 text-xl">
+            "We're proud to support this incredible event that brings together
+            Australia's brightest young minds in STEM education and competitive
+            robotics."
+          </p>
+          <button className="rounded-md bg-orange-400 px-5 py-3 text-xl font-semibold text-white transition hover:bg-orange-500">
+            Become a Sponsor
+          </button>
+        </div>
+      </section>
     </main>
   );
 }
