@@ -1,4 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
+import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 
@@ -21,15 +22,28 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
       >
         <div className="mx-auto max-w-7xl">
           {/* Main content with horizontal line */}
-          <div className="stroke-3 grid w-full grid-cols-[40%_20%_30%_10%] border-b border-white pb-2 pr-5">
+          <div className="stroke-3 grid w-full grid-cols-1 gap-y-8 border-b border-white pb-8 pr-5 sm:grid-cols-2 lg:grid-cols-[40%_20%_30%_10%]">
             {/* Logo */}
-            <div>
+            <div className="pr-10">
               <h2 className="ft-title mb-5">Event Organizers</h2>
-              <p className="ft-content mb-2">Logo</p>
+              <Image
+                className="mb-5 object-contain pr-8"
+                src="/images/aicode_logo_HD.png"
+                alt="AICODE Logo"
+                width={282}
+                height={55}
+              />
+              <Image
+                className="mb-5 object-contain pr-8"
+                src="https://squadrone.com.au/wp-content/uploads/2024/11/squadrone-logo-01-scaled.webp"
+                alt="Squadrone Logo"
+                width={160}
+                height={56}
+              />
             </div>
 
             {/* Pages */}
-            <div className="pr-5">
+            <div className="pr-10">
               <h3 className="ft-subtitle mb-3">Pages</h3>
               <ul className="ft-content mb-2 text-gray-300">
                 <li className="mb-4">
@@ -61,7 +75,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             </div>
 
             {/* Contact Info */}
-            <div className="pr-5">
+            <div className="pr-10">
               <h3 className="ft-subtitle mb-3">Contact Info</h3>
               <p className="ft-content mb-2 text-gray-300">
                 Email:
@@ -95,7 +109,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             </div>
 
             {/* Socials */}
-            <div className="pr-5">
+            <div className="pr-10">
               <h3 className="ft-subtitle mb-3">Socials</h3>
               <ul className="ft-content mb-2 text-gray-300">
                 <li className="mb-4">
