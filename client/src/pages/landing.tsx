@@ -53,7 +53,6 @@ export default function Landing() {
 
       {/* 3 cards is a separate sections because of my difficulties animating runnig add inside the section, prob because of cente text */}
       <section className="bg-background bg-gray-100 px-6 py-16 text-center text-foreground dark:bg-muted">
-        {" "}
         {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         <h2 className="primary mb-4 text-4xl font-bold text-primary">
@@ -115,7 +114,7 @@ export default function Landing() {
       <section className="bg-white px-6 py-20 text-center">
         <h2 className="mb-2 text-3xl font-bold">
           Powered By Our{" "}
-          <span className="text-orange-400 text-primary">Partners</span>
+          <span className="text-primary">Partners</span>
         </h2>
         <p className="mb-12 text-muted-foreground">
           Supporting the next generation of innovators and engineers
