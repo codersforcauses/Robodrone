@@ -111,17 +111,21 @@ export default function Landing() {
           Supporting the next generation of innovators and engineers
         </p>
 
-        <div className="bg-grey/20 mb-16 flex flex-wrap items-center justify-center gap-8">
+        <div className="bg-grey/20 mb-17 flex flex-wrap items-center justify-center gap-8">
           {/*I get warning when I try to use img tag, is there another way that you would prefere it? do we need alt for search engines*/}
           <Image
-            src="../aicodeLogo.png"
+            src="/aicodeLogo.png"
             alt="AICodeLogo"
-            className="inset-0 h-12 hover:scale-110"
+            className="hover:scale-120 inset-0 h-12"
+            width={350}
+            height={450}
           />
           <Image
-            src="../squadroneLogo.png"
+            src="/squadroneLogo.png"
             alt="SquadroneLogo"
-            className="inset-0 h-12 hover:scale-110"
+            className="hover:scale-120 inset-0 h-12"
+            width={350}
+            height={450}
           />
         </div>
 
