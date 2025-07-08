@@ -14,7 +14,7 @@ export default function Landing() {
             <span className="text-orange-400">Strategy</span> take flight
           </h1>
           <h2 className="text-3xl font-semibold text-orange-400">
-            The 2025 Australia Youth Drone Test
+            The 2025 Australia Youth Drone Tournament
           </h2>
           <h3 className="text-lg">FTF Obstacle Challenge</h3>
           <div className="flex flex-col justify-center gap-4 md:flex-row">
@@ -29,12 +29,30 @@ export default function Landing() {
         </div>
       </section>
 
-      <div>
-        <section className="flex flex-col space-y-6 text-center">
+      <div className="overflow-hidden whitespace-nowrap bg-orange-500 text-white">
+        {/* running ad line, also called stock line, does anyone know how to do the actual countdown? */}
+        <div className="animate-marquee inline-block px-4 py-2 text-sm font-bold">
           {" "}
-          {/* trying vertical layout with vertical spacing between elements */}
-        </section>
+          {/* marquee is just an image scroll btw */}
+          📅 Group Stages: March 15-16, 2025 🏆 Finals: March 17, 2025 📍 Venue:
+          Melbourne Convention Centre
+        </div>
       </div>
+
+      {/* 3 cards is a separate sections because of my difficulties animating rnnig add inside the section, prob because of cente text */}
+      <section className="bg-background px-6 py-16 text-center text-foreground">
+        {" "}
+        {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
+        {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
+        <h2 className="mb-4 text-4xl font-bold">
+          An Event for the Next Generation of{" "}
+          <span className="text-primary">Innovators</span>
+        </h2>
+        <p className="mb-12 text-xl text-muted-foreground">
+          Fostering STEM skills through competitive drone racing, teamwork, and
+          strategic thinking
+        </p>
+      </section>
 
       <div className="container mx-auto px-4">
         {" "}

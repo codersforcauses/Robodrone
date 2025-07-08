@@ -66,8 +66,15 @@
   }
 }
 
-@layer base {
-  body {
-    @apply bg-background text-foreground;
+
+{/*Custom utility class for running add line, the other base line is needed for*/}
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 10s linear infinite;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
   }
 }
