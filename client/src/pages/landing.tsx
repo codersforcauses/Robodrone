@@ -5,20 +5,21 @@ export default function Landing() {
     /* trying to create hero section between nav bar and running add*/
     <main>
       <section
-        className="relative bg-background bg-cover bg-center text-foreground"
+        className="relative flex min-h-screen items-center justify-center bg-cover bg-center px-4 text-center text-white"
         style={{ backgroundImage: "url('/drone.jpg')" }}
       >
-        <div className="space-y-6 rounded-lg bg-black/50 p-8 text-center text-white">
+        <div className="absolute inset-0 z-0 bg-gray-900/50"></div>
+        <div className="relative z-20 max-w-4xl space-y-6">
           {" "}
-          {/* semi-tranparent background with vertical space between sub-elements of 24px */}
-          <h1 className="font-extabold text-6xl leading-tight">
-            where skill, speed and{" "}
-            <span className="text-orange-400">Strategy</span> take flight
+          {/* space-y-6 rounded-lg bg-black/50 p-8   semi-tranparent background with vertical space between sub-elements of 24px */}
+          <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
+            Where Skill, Speed and{" "}
+            <span className="text-orange-400">Strategy</span> Take Flight
           </h1>
-          <h2 className="text-3xl font-semibold text-orange-400">
+          <h2 className="text-xl font-semibold text-orange-400 sm:text-2xl md:text-3xl">
             The 2025 Australia Youth Drone Tournament
           </h2>
-          <h3 className="text-lg">FTF Obstacle Challenge</h3>
+          <h3 className="text-lg md:text-xl">FTF Obstacle Challenge</h3>
           <div className="flex flex-col justify-center gap-4 md:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
             <button className="rounded-md bg-orange-400 px-5 py-3 font-semibold text-white transition hover:bg-orange-500">
@@ -36,7 +37,8 @@ export default function Landing() {
         <div className="animate-marquee inline-block px-4 py-2 text-sm font-bold">
           {" "}
           {/* marquee is just an image scroll btw */}
-          📅 Group Stages: March 15-16, 2025 🏆 Finals: March 17, 2025 📍 Venue:
+          🔴 LIVE: Competition starts in: 15 days, 4 hours, 32 minutes 📅 Group
+          Stages: March 15-16, 2025 🏆 Finals: March 17, 2025 📍 Venue:
           Melbourne Convention Centre
         </div>
       </div>
