@@ -67,7 +67,6 @@
 }
 
 
-{/*Custom utility class for running add line, the other base line is needed for*/}
 @layer utilities {
   .animate-marquee {
     animation: marquee 20s linear infinite;
