@@ -4,9 +4,11 @@ from django.db import models
 
 
 class Match(models.Model):
+    match_id = models.AutoField(primary_key=True)
     match_name = models.CharField(max_length=255)
     match_date = models.DateTimeField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    group_id = models.IntegerField()
+    stage_id = models.IntegerField()
 
     def __str__(self):
         return self.match_name
