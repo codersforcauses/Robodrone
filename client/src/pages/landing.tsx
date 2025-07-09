@@ -56,7 +56,7 @@ export default function Landing() {
         {" "}
         {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
-        <h2 className="mb-4 text-4xl font-bold">
+        <h2 className="primary mb-4 text-4xl font-bold text-primary">
           An Event for the Next Generation of{" "}
           <span className="text-primary">Innovators</span>
         </h2>
