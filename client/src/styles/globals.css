@@ -69,7 +69,7 @@
 
 @layer utilities {
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 25s linear infinite;
   }
 
   @keyframes marquee {
@@ -83,7 +83,7 @@
     @apply font-montserrat text-[46px] font-semibold leading-[1.15em];
   }
   .subtitle {
-    @apply font-montserrat text-[30px] font-bold leading-[1.15em];
+    @apply font-montserrat text-[32px] font-bold leading-[1.15em];
   }
   .medium-lg {
     @apply font-montserrat text-[24px] font-[500];
@@ -104,5 +104,9 @@
   }
   .caption {
     @apply font-worksans text-[16px] font-normal;
+  }
+
+  .card-heading {
+    @apply font-montserrat text-[17px] font-bold;
   }
 }
