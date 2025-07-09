@@ -23,7 +23,7 @@ export default function Landing() {
           <div className="flex flex-col justify-center gap-4 md:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
             <button className="rounded-md bg-orange-400 px-5 py-3 font-semibold text-white transition hover:bg-orange-500">
-              View Live Leaderboard{" "}
+              View Live Leaderboard
             </button>
             <button className="rounded-md bg-orange-400 px-5 py-3 font-semibold text-white transition hover:bg-orange-500">
               Schedule
@@ -35,11 +35,19 @@ export default function Landing() {
       <div className="overflow-hidden whitespace-nowrap bg-orange-500 text-white">
         {/* running ad line, also called stock line, does anyone know how to do the actual countdown? */}
         <div className="animate-marquee inline-block px-4 py-2 text-sm font-bold">
-          {" "}
           {/* marquee is just an image scroll btw */}
-          🔴 LIVE: Competition starts in: 15 days, 4 hours, 32 minutes 📅 Group
-          Stages: March 15-16, 2025 🏆 Finals: March 17, 2025 📍 Venue:
-          Melbourne Convention Centre
+          <span className="mx-4 inline-block">
+            🔴 LIVE: Competition starts in: 15 days, 4 hours, 32 minutes{"   "}
+          </span>
+          <span className="mx-4 inline-block">
+            📅 Group Stages: March 15-16, 2025{"   "}
+          </span>
+          <span className="mx-4 inline-block">
+            🏆 Finals: March 17, 2025{"   "}
+          </span>
+          <span className="mx-4 inline-block">
+            📍 Venue: Melbourne Convention Centre{"   "}
+          </span>
         </div>
       </div>
 
