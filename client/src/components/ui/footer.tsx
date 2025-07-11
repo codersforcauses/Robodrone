@@ -2,6 +2,7 @@ import { Slot } from "@radix-ui/react-slot";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
       >
         <div className="mx-auto max-w-7xl">
           {/* Main content with horizontal line */}
-          <div className="stroke-3 grid w-full grid-cols-1 gap-y-8 border-b border-white pb-8 pr-5 sm:grid-cols-2 lg:grid-cols-[40%_20%_30%_10%]">
+          <div className="stroke-3 grid w-full grid-cols-1 gap-y-8 border-b border-white pb-8 pr-5 sm:grid-cols-2 lg:grid-cols-[35%_20%_30%_15%]">
             {/* Logo */}
             <div className="pr-10">
               <h2 className="ft-title mb-5">Event Organizers</h2>
@@ -47,27 +48,27 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
               <h3 className="ft-subtitle mb-3">Pages</h3>
               <ul className="ft-content mb-2 text-gray-300">
                 <li className="mb-4">
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-primary">
                     Home
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-primary">
                     Schedule
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-primary">
                     Format & Rules
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:text-white">
-                    Sponsor & Guest
+                  <Link href="#" className="hover:text-primary">
+                    Sponsors & Guests
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-primary">
                     Leaderboard
                   </Link>
                 </li>
@@ -82,15 +83,12 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 <br />
                 <a
                   href="mailto:info@youthdronetournament.com.au"
-                  className="ft-content break-all underline hover:text-white"
+                  className="ft-content break-all underline hover:text-primary"
                 >
                   info@youthdronetournament.com.au
                 </a>
               </p>
-              <a
-                href="#"
-                className="ft-content text-gray-300 underline hover:text-white"
-              >
+              <p className="ft-content mb-2">
                 Venue:
                 <br />
                 Melbourne Convention Centre
@@ -98,31 +96,30 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 1 Convention Centre Pl
                 <br />
                 South Wharf VIC 3006
-              </a>
-              <br />
-              <Link
-                href="#"
-                className="ft-content text-gray-300 underline hover:text-white"
-              >
-                Contact Form →
-              </Link>
+              </p>
             </div>
 
             {/* Socials */}
-            <div className="pr-10">
-              <h3 className="ft-subtitle mb-3">Socials</h3>
-              <ul className="ft-content mb-2 text-gray-300">
-                <li className="mb-4">
-                  <a href="#" className="hover:text-white">
-                    Instagram
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:text-white">
-                    Facebook
-                  </a>
-                </li>
-              </ul>
+            <div className="pr-5">
+              <h3 className="ft-subtitle mb-5">Follow Us</h3>
+              <div className="mb-5 flex gap-4">
+                <a
+                  href="#"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
+                >
+                  <FaFacebookF size={18} />
+                </a>
+                <a
+                  href="#"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
+                >
+                  <FaInstagram size={18} />
+                </a>
+              </div>
+              <p className="ft-content text-sm text-gray-300">
+                Stay updated with the latest news and highlights from the
+                tournament
+              </p>
             </div>
           </div>
 
