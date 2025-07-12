@@ -48,7 +48,7 @@ const SponsorsAndGuest = () => {
         <h1
           className={`text-6xl font-semibold leading-none ${montserrat.className}`}
         >
-          Sponsors & Guests
+          Guests & Sponsors
         </h1>
       </div>
 
