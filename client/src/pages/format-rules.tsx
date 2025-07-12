@@ -10,28 +10,30 @@ import ProgressBar from "../components/ui/progress";
 // Style constants definition
 const styles = {
   // Text styles
-  contentText: "text-base text-neutral-900",
-  sectionTitle: "mb-3 text-lg font-bold text-neutral-900",
-  subsectionTitle: "mb-2 text-base font-bold text-neutral-900",
+  contentText: "body-sm text-neutral-900",
+  sectionTitle: "medium-lg mb-3 text-neutral-900",
+  subsectionTitle: "medium-md mb-2 text-neutral-900",
 
   // Layout styles
-  listContent: "ml-4 space-y-2 text-base text-neutral-900",
-  listIndented: "ml-8 space-y-1 text-base text-neutral-900",
+  listContent: "ml-4 space-y-2 body-sm text-neutral-900",
+  listIndented: "ml-8 space-y-1 body-sm text-neutral-900",
   sectionSpacing: "space-y-4",
   cardSpacing: "space-y-3",
 
   // Table styles
-  tableCell: "border border-gray-300 px-2 py-2 text-center",
-  tableCellMedium: "border border-gray-300 px-2 py-2 text-center font-medium",
-  tableCellBold: "border border-gray-300 px-2 py-2 text-center font-bold",
-  tableHeader: "border border-gray-300 px-2 py-2 text-left font-bold",
+  tableCell: "border border-gray-300 px-2 py-2 text-center caption",
+  tableCellMedium:
+    "border border-gray-300 px-2 py-2 text-center font-medium caption",
+  tableCellBold:
+    "border border-gray-300 px-2 py-2 text-center font-bold caption",
+  tableHeader: "border border-gray-300 px-2 py-2 text-left font-bold caption",
 
   // Container styles
   pageBackground: "bg-gray-100",
 
   // Special styles
-  importantText: "text-base text-neutral-900 font-medium",
-  warningText: "text-base text-red-600 font-medium",
+  importantText: "body-lg text-neutral-900 font-medium",
+  warningText: "body-sm text-red-600 font-medium",
 } as const;
 
 // Reusable component definitions
@@ -110,7 +112,7 @@ const FormatRulesPage: NextPage = () => {
               {/* ProgressBar Component replaces the title */}
               <ProgressBar pageName="format-rules" />
 
-              <ContentText>
+              <ContentText className="body-lg">
                 Complete guide to the 2025 WRC Drone Speed Challenge. Each match
                 is a<strong> 3-minute </strong>2v2 team competition with two
                 distinct stages.
@@ -396,7 +398,7 @@ const FormatRulesPage: NextPage = () => {
                   <div className="mt-6">
                     <SubsectionTitle>Honor Points Award Table:</SubsectionTitle>
                     <div className="overflow-x-auto">
-                      <table className="w-full border border-gray-300 text-sm text-neutral-900">
+                      <table className="caption w-full border border-gray-300 text-neutral-900">
                         <thead className="bg-gray-100">
                           <tr>
                             <TableHeader>Rank Combination</TableHeader>
@@ -455,63 +457,87 @@ const FormatRulesPage: NextPage = () => {
                   <div className="mt-6">
                     <SubsectionTitle>Scoring Example:</SubsectionTitle>
                     <div className="overflow-x-auto">
-                      <table className="w-full border border-gray-300 text-sm text-neutral-900">
+                      <table className="caption w-full border border-gray-300 text-neutral-900">
                         <thead className="bg-gray-100">
                           <tr>
                             <TableHeader>Team Name</TableHeader>
                             <TableHeader>
                               Honor Points
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (Based on obstacle finish)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               White Pins
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (+2 pts each)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Penalty Pins Hit
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (-3 pts each)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Yellow Cards
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (-3 pts each)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Red Cards
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (-10 pts each)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Regular Points
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (Total from above)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Mission Time (s)
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (incl. penalties)
                               </span>
                             </TableHeader>
                             <TableHeader>
                               Final Rank
                               <br />
-                              <span className="text-xs font-normal">
+                              <span
+                                className="font-normal"
+                                style={{ fontSize: "12px" }}
+                              >
                                 (Final position)
                               </span>
                             </TableHeader>
@@ -569,7 +595,7 @@ const FormatRulesPage: NextPage = () => {
                         </tbody>
                       </table>
                     </div>
-                    <ContentText className="mt-2 text-sm">
+                    <ContentText className="caption mt-2">
                       <strong>Note:</strong> Red Falcons won due to highest
                       Honor Points (3). Even though Silver Sparks had higher
                       Regular Points (7) than Blue Hawks (6), Blue Hawks ranked
