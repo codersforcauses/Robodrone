@@ -7,6 +7,16 @@ const isWindowsDevContainer = () =>
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'squadrone.com.au',
+        port: '',
+        pathname: '/wp-content/uploads/**',
+      },
+    ],
+  },
   reactStrictMode: true,
   // dumb fix for windows docker
   webpack: isWindowsDevContainer()
