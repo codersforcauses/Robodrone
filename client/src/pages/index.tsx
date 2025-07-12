@@ -5,7 +5,6 @@ import { usePings } from "@/hooks/pings";
 import { cn } from "@/lib/utils";
 
 import { Button } from "../components/ui/button";
-import { Footer } from "../components/ui/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,23 +19,15 @@ export default function Home() {
 
   return (
     <>
-      <main
-        className={cn(
-          "flex min-h-screen flex-col items-center gap-4 p-24 font-sans",
-          fontSans.variable,
-        )}
-      >
-        {/* Delete after style testing */}
-        <p className="subtitle text-primary">subtitle with primary colour</p>
-        <h1 className="title-large text-dark">Test Title</h1>
-        <Button onClick={() => setClicked(true)}>
-          {isLoading ? "Loading" : "Ping"}
-        </Button>
-        <p>
-          Response from server: <span>{data as string}</span>
-        </p>
-      </main>
-      <Footer />
+      {/* Delete after style testing */}
+      <p className="subtitle text-primary">subtitle with primary colour</p>
+      <h1 className="title-large text-dark">Test Title</h1>
+      <Button onClick={() => setClicked(true)}>
+        {isLoading ? "Loading" : "Ping"}
+      </Button>
+      <p>
+        Response from server: <span>{data as string}</span>
+      </p>
     </>
   );
 }

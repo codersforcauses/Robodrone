@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { Montserrat, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
 
+import Footer from "../components/ui/footer";
+
 const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -29,8 +31,13 @@ export default function App({ Component, pageProps }: AppProps) {
     >
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Component {...pageProps} />
+        <div className="w-full">
+          <main className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-24">
+            <Component {...pageProps} />
+          </main>
+        </div>
       </QueryClientProvider>
+      <Footer />
     </div>
   );
 }
