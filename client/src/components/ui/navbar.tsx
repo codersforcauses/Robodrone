@@ -22,8 +22,8 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <>
-      <nav className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
+    <div className="fixed left-0 right-0 top-0 h-16 w-full bg-light">
+      <nav className="medium-sm mx-auto flex h-full max-w-7xl items-center justify-between">
         {/* Logo container */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
           <Image
@@ -40,10 +40,12 @@ export default function Navbar() {
           {navlinks.map((link) => {
             if (link.label === "Leaderboard") {
               return (
-                <Link key={link.href} href={link.href}>
-                  <button className="btn-primary mr-10">
-                    View Leaderboard
-                  </button>
+                <Link
+                  className="btn-primary mr-10"
+                  key={link.href}
+                  href={link.href}
+                >
+                  View Leaderboard
                 </Link>
               );
             }
@@ -68,8 +70,8 @@ export default function Navbar() {
       <div
         className={
           menuOpen
-            ? "fixed right-0 top-0 h-screen w-[65%] bg-light p-10 shadow-xl duration-500 ease-out"
-            : "fixed -right-full h-screen duration-500 ease-in"
+            ? "fixed right-0 top-0 h-screen w-[300px] bg-light p-10 shadow-xl duration-500 ease-out"
+            : "fixed -right-full h-screen w-[300px] duration-500 ease-in"
         }
       >
         <button onClick={handleNav} className="ml-auto block">
@@ -89,6 +91,6 @@ export default function Navbar() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
