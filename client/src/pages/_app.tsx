@@ -7,6 +7,9 @@ import { Montserrat, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
 
 import Footer from "../components/ui/footer";
 
+// import { cn } from "@/lib/utils";
+import Navbar from "../components/ui/navbar";
+
 const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
