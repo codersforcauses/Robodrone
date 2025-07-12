@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "api.healthcheck",
     "api.match",
+    "api.sponsor.apps.SponsorConfig",
 ]
 
 MIDDLEWARE = [
@@ -101,7 +102,7 @@ DATABASES = {
         "NAME": os.environ.get("POSTGRES_NAME") or "postgres",
         "USER": os.environ.get("POSTGRES_USER") or "postgres",
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD") or "password",
-        "HOST": os.environ.get("POSTGRES_HOST") or "host.docker.internal",
+        "HOST": os.environ.get("POSTGRES_HOST") or "localhost",
         "PORT": os.environ.get("POSTGRES_PORT") or 5432,
     }
 }
@@ -157,3 +158,6 @@ STATICFILES_DIRS = ("static",)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
