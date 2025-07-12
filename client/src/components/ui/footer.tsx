@@ -64,7 +64,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 </li>
                 <li className="mb-4">
                   <Link href="#" className="hover:text-primary">
-                    Sponsors & Guests
+                    Guests & Sponsors
                   </Link>
                 </li>
                 <li className="mb-4">
@@ -104,13 +104,13 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
               <h3 className="ft-subtitle mb-5">Follow Us</h3>
               <div className="mb-5 flex gap-4">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/people/Squadrone/100094782254912/"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
                 >
                   <FaFacebookF size={18} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/au.Squadrone/#"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
                 >
                   <FaInstagram size={18} />
