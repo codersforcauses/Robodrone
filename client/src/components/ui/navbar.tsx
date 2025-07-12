@@ -15,7 +15,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Schedule", href: "/schedule" },
     { label: "Format & Rules", href: "/format-rules" },
-    { label: "Sponsor & Guest", href: "/sponsor-guest" },
+    { label: "Guests & Sponsors", href: "/guests-sponsors" },
     { label: "Leaderboard", href: "/leaderboard" },
   ];
   const handleNav = () => {
