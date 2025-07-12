@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from api.sponsor.models import Sponsor, Guest
 
+
 class SponsorGuestModelTests(TestCase):
     def setUp(self):
         logo_image = SimpleUploadedFile(
