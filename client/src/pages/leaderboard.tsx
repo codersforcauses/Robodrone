@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import Dropdown from "../components/ui/Leaderboard/Dropdown";
 import List from "../components/ui/Leaderboard/List";
 
 export default function LeaderboardPage() {
