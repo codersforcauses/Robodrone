@@ -6,4 +6,4 @@ class MatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Match
         fields = "__all__"
-        read_only_fields = ("match_id")
+        read_only_field = "match_id"
