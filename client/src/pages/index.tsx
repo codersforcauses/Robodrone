@@ -12,7 +12,9 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="title-large text-dark">Title Test</h1>
+      {/* Delete after style testing */}
+      <p className="subtitle text-primary">subtitle with primary colour</p>
+      <h1 className="title-large text-dark">Test Title</h1>
       <Button onClick={() => setClicked(true)}>
         {isLoading ? "Loading" : "Ping"}
       </Button>

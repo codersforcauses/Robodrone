@@ -99,6 +99,31 @@
   .caption {
     @apply font-worksans text-[16px] font-normal;
   }
+  /* footer */
+  .ft-title {
+    @apply font-jakarta text-[32px] font-semibold;
+  }
+  .ft-subtitle {
+    @apply font-jakarta text-[20px] font-semibold;
+  }
+  .ft-content {
+    @apply font-jakarta text-[16px] font-medium;
+  }
+}
+
+@layer components {
+  .nav-link-base {
+    @apply transition-colors duration-200 hover:text-primary;
+  }
+  .nav-link-navbar {
+    @apply nav-link-base text-dark;
+  }
+  .nav-link-footer {
+    @apply nav-link-base text-light;
+  }
+  .nav-link-active {
+    @apply text-primary;
+  }
 }
 
 @layer components {
