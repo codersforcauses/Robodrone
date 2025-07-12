@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 leaderboard_data = {
@@ -14,4 +14,4 @@ leaderboard_data = {
 # Create your views here.
 @api_view(["GET"])
 def leaderboard(request):
-    return HttpResponse(leaderboard_data, status=200)
+    return JsonResponse(leaderboard_data, status=200)
