@@ -88,7 +88,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                   info@youthdronetournament.com.au
                 </a>
               </p>
-              <p className="ft-content mb-2">
+              <p className="ft-content mb-3 text-gray-300">
                 Venue:
                 <br />
                 Melbourne Convention Centre
