@@ -3,5 +3,5 @@ from . import views
 
 app_name = "match"
 urlpatterns = [
-    path("/leaderboard", views.leaderboard, name="leaderboard"),
+    path("leaderboard", views.leaderboard, name="leaderboard"),
 ]
