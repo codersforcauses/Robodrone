@@ -1,5 +1,3 @@
-# server/api/models.py
-
 from django.db import models
 
 
@@ -26,7 +24,7 @@ class Team(models.Model):
 class MatchResult(models.Model):
     match_result_id = models.AutoField(primary_key=True)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    team = models.ForeignKey('Team', on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     white_pins = models.IntegerField(null=True, blank=True)
     penalty_pins = models.IntegerField(null=True, blank=True)
@@ -40,4 +38,4 @@ class MatchResult(models.Model):
     completed_time_second = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.team.team_name} in {self.match.match_name}"
+        return f"{self.team} in {self.match}"
