@@ -1,17 +1,8 @@
-from rest_framework.decorators import api_view
+from rest_framework import viewsets, permissions
+from .models import Match
+from .serializers import MatchSerializer
 
-from django.http import JsonResponse
-
-
-leaderboard_data = {
-    "honor_point": 1,
-    "regular_point": 10,
-    "completed_time_second": 100
-    # other details needed for FrontEnd
-}
-
-
-# Create your views here.
-@api_view(["GET"])
-def leaderboard(request):
-    return JsonResponse(leaderboard_data, status=200)
+class MatchViewSet(viewsets.ModelViewSet):
+    queryset = Match.objects.all()
+    serializer_class = MatchSerializer
+    permission_classes = [permissions.IsAuthenticated]

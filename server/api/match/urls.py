@@ -1,7 +1,10 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import MatchViewSet
 
-app_name = "match"
+router = DefaultRouter()
+router.register(r'matches', MatchViewSet, basename='match')
+
 urlpatterns = [
-    path("leaderboard", views.leaderboard, name="leaderboard"),
+    path('', include(router.urls)),
 ]
