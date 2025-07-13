@@ -22,7 +22,7 @@ const SponsorsAndGuest = () => {
     const fetchPartners = async () => {
       try {
         // Send request to backend (asynchronous)
-        const res = await fetch("/api/partners");
+        const res = await fetch("http://localhost:8000/api/partners");
 
         // Wait for JSON response (also asynchronous)
         const data = await res.json();
