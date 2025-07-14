@@ -15,15 +15,15 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Schedule", href: "/schedule" },
     { label: "Format & Rules", href: "/format-rules" },
-    { label: "Sponsor & Guest", href: "/sponsor-guest" },
+    { label: "Guests & Sponsors", href: "/guests-sponsors" },
     { label: "Leaderboard", href: "/leaderboard" },
   ];
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <>
-      <nav className="medium-sm fixed left-0 top-0 flex h-16 w-screen items-center justify-between bg-light">
+    <div className="fixed left-0 right-0 top-0 h-16 w-full bg-light">
+      <nav className="medium-sm mx-auto flex h-full max-w-7xl items-center justify-between">
         {/* Logo container */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
           <Image
@@ -37,38 +37,46 @@ export default function Navbar() {
 
         {/* Navbar options/links container */}
         <div className="hidden items-center gap-8 lg:flex">
-          {navlinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={
-                router.pathname === link.href ? "nav-link-active" : "nav-link"
-              }
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="mr-10 rounded-2xl bg-primary p-3 px-6 font-semibold text-light">
-            View Live Results
-          </div>
+          {navlinks.map((link) => {
+            if (link.label === "Leaderboard") {
+              return (
+                <Link
+                  className="btn-primary mr-10"
+                  key={link.href}
+                  href={link.href}
+                >
+                  View Leaderboard
+                </Link>
+              );
+            }
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={
+                  router.pathname === link.href ? "nav-link-active" : "nav-link"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
         {/* Mobile navbar */}
-        <div onClick={handleNav} className="mr-5 cursor-pointer lg:hidden">
+        <button onClick={handleNav} className="mr-5 lg:hidden">
           <FiAlignJustify size={35} />
-        </div>
+        </button>
       </nav>
       <div
         className={
           menuOpen
-            ? "fixed right-0 top-0 h-screen w-[65%] bg-light p-10 shadow-xl duration-500 ease-out"
-            : "fixed right-[-100%] duration-500 ease-in"
+            ? "fixed right-0 top-0 h-screen w-[300px] bg-light p-10 shadow-xl duration-500 ease-out"
+            : "fixed -right-full h-screen w-[300px] duration-500 ease-in"
         }
       >
-        <div className="flex w-full items-center justify-end">
-          <div onClick={handleNav} className="cursor-pointer">
-            <FiX size={35} />
-          </div>
-        </div>
+        <button onClick={handleNav} className="ml-auto block">
+          <FiX size={35} />
+        </button>
         <div className="medium-sm flex flex-col gap-4">
           {navlinks.map((link) => (
             <Link
@@ -83,6 +91,6 @@ export default function Navbar() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
