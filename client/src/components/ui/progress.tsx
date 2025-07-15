@@ -25,9 +25,11 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
 
   return (
     <div>
-      <div className="customerBar w-full flex-col justify-center gap-2">
+      <div className="w-full flex-col justify-center">
         <div className="mb-4 flex items-center justify-center">
-          <a className="title-large text-dark">{titleName}</a>
+          <a className="title-large text-center text-[50px] text-dark md:text-[60px]">
+            {titleName}
+          </a>
         </div>
         <div className="flex flex-1">
           <div
