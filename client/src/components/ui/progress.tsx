@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { title } from "process";
 import * as React from "react";
 
 export default function ProgressBar({ pageName }: { pageName: string }) {
@@ -8,27 +7,27 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
   switch (pageName) {
     case "schedule":
       progress = 0;
-      titleName = "Schedule";
+      titleName = "Drone Competition Schedule";
       break;
     case "format-rules":
-      progress = 25;
-      titleName = "Format Rules";
+      progress = 33;
+      titleName = "Format & Rules";
+      break;
+    case "guests-sponsors":
+      titleName = "Guests & Sponsors";
+      progress = 66;
       break;
     case "leaderboard":
       titleName = "Leaderboard";
-      progress = 50;
-      break;
-    case "sponsor-guest":
-      titleName = "Sponsor & Guest";
-      progress = 75;
+      progress = 90;
       break;
   }
 
   return (
     <div>
       <div className="customerBar w-full flex-col justify-center gap-2">
-        <div className="mb-10 flex items-center justify-center">
-          <a className="title-large">{titleName}</a>
+        <div className="mb-4 flex items-center justify-center">
+          <a className="title-large text-dark">{titleName}</a>
         </div>
         <div className="flex flex-1">
           <div
@@ -52,15 +51,15 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
             <Image
               src="/FinishFlag.svg"
               alt="Finish Flag"
-              width="50"
-              height="20"
+              width="25"
+              height="10"
               className="object-contain"
             />
           </div>
         </div>
 
         <div className="flex w-full">
-          <div className="h-[2px] w-full bg-black" />
+          <div className="h-[2px] w-full bg-dark" />
         </div>
       </div>
     </div>

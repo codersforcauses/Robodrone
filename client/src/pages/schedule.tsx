@@ -16,7 +16,6 @@ export default function Home() {
       <div className="mt-4 w-full justify-center">
         <ProgressBar pageName="schedule" />
       </div>
-      <h1 className="title-large text-dark">Title Test</h1>
       <Button onClick={() => setClicked(true)}>
         {isLoading ? "Loading" : "Ping"}
       </Button>
