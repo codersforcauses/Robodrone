@@ -23,6 +23,7 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
         worksans: ["var(--font-worksans)", ...fontFamily.sans],
+        fugazone: ["var(--font-fugazone)", ...fontFamily.sans],
       },
       colors: {
         primary: "#F89200",

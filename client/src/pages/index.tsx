@@ -1,16 +1,8 @@
-import { Inter as FontSans } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
+import { RiCalendarScheduleLine } from "react-icons/ri";
 
 import { usePings } from "@/hooks/pings";
-import { cn } from "@/lib/utils";
-
-import { Button } from "../components/ui/button";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 export default function Home() {
   const [clicked, setClicked] = useState(false);
@@ -29,9 +21,9 @@ export default function Home() {
         <div className="relative z-20 max-w-4xl space-y-6">
           {" "}
           {/* space-y-6 rounded-lg bg-black/50 p-8   semi-tranparent background with vertical space between sub-elements of 24px */}
-          <h1 className="title sm:text-5xl md:text-6xl">
-            Where Skill, Speed and{" "}
-            <span className="text-primary">Strategy</span> Take Flight
+          <h1 className="font-fugazone text-4xl md:text-7xl">
+            WHERE SKILL, SPEED, AND{" "}
+            <span className="text-primary">STRATEGY</span> TAKE FLIGHT
           </h1>
           <h2 className="subtitle text-primary sm:text-2xl md:text-3xl">
             The 2025 Australia Youth Drone Tournament
@@ -40,10 +32,10 @@ export default function Home() {
           <div className="flex flex-col justify-center gap-4 md:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
             <button className="caption rounded-md bg-primary px-5 py-3 font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:opacity-90 hover:saturate-100">
-              View Live Leaderboard
+              View Leaderboard
             </button>
             <button className="caption rounded-md bg-primary px-5 py-3 font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:opacity-90 hover:saturate-100">
-              Schedule
+              See The Schedule
             </button>
           </div>
         </div>
@@ -70,7 +62,7 @@ export default function Home() {
       </div>
 
       {/* 3 cards is a separate sections because of my difficulties animating runnig add inside the section, prob because of cente text */}
-      <section className="bg-background bg-gray-100 px-6 py-16 text-center text-foreground dark:bg-muted">
+      <section className="flex flex-col justify-center bg-background bg-gray-100 px-6 py-16 text-center text-foreground dark:bg-muted">
         {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
         <h2 className="subtitle primary mb-4 text-4xl">
@@ -102,6 +94,7 @@ export default function Home() {
             <div className="mb-4 text-primary">
               <span className="text-4xl"></span>
             </div>
+            {/* <RiCalendarScheduleLine size={30} /> */}
             <h3 className="card-heading mb-3">The Schedule</h3>
             <div>
               <p className="caption mb-2 text-muted-foreground">
@@ -146,18 +139,17 @@ export default function Home() {
         </p>
 
         <div className="bg-grey/20 mb-10 flex flex-wrap items-center justify-center gap-8">
-          {/*I get warning when I try to use img tag, is there another way that you would prefere it? do we need alt for search engines*/}
           <Image
             src="/aicodeLogo.png"
             alt="AICodeLogo"
-            className="saturate-50 filter transition duration-300 ease-in-out hover:scale-110 hover:saturate-100"
+            className="opacity-70 transition duration-300 ease-in-out hover:scale-110 hover:opacity-100"
             width={275}
             height={200}
           />
           <Image
             src="/squadroneLogo.png"
             alt="SquadroneLogo"
-            className="saturate-50 filter transition duration-300 ease-in-out hover:scale-110 hover:saturate-100"
+            className="opacity-70 transition duration-300 ease-in-out hover:scale-110 hover:opacity-100"
             width={175}
             height={200}
           />
@@ -169,9 +161,9 @@ export default function Home() {
             Australia's brightest young minds in STEM education and competitive
             robotics."
           </p>
-          <button className="caption hover:bg-orange-350 rounded-md bg-orange-400 px-5 py-3 text-white transition">
+          {/* <button className="caption hover:bg-orange-350 rounded-md bg-orange-400 px-5 py-3 text-white transition">
             Become a Sponsor
-          </button>
+          </button> */}
         </div>
       </section>
     </main>
