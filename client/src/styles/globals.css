@@ -33,10 +33,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    /* Add custom color variables */
-    --light: 255 255 255;
-    --primary-color: 59 130 246; /* blue-500 */
   }
 
   .dark {
@@ -75,7 +71,7 @@
     @apply bg-background text-foreground;
   }
   .title-large {
-    @apply font-montserrat text-[60px] font-semibold leading-[1em];
+    @apply font-montserrat text-[60px] font-bold leading-[1em];
   }
   .title {
     @apply font-montserrat text-[46px] font-semibold leading-[1.15em];
@@ -92,7 +88,7 @@
   }
   /* navbar */
   .medium-sm {
-    @apply font-montserrat text-[14px] font-bold;
+    @apply font-montserrat text-[14px] font-bold tracking-wide;
   }
   .body-lg {
     @apply font-worksans text-[22px] font-[500];
@@ -103,46 +99,44 @@
   .caption {
     @apply font-worksans text-[16px] font-normal;
   }
+  /* footer */
+  .ft-title {
+    @apply font-jakarta text-[32px] font-semibold;
+  }
+  .ft-subtitle {
+    @apply font-jakarta text-[20px] font-semibold;
+  }
+  .ft-content {
+    @apply font-jakarta text-[16px] font-medium;
+  }
 }
 
 @layer components {
-  /* Navbar related styles */
-  .bg-light {
-    @apply bg-white;
+  .nav-link-base {
+    @apply transition-colors duration-200 hover:text-primary;
   }
-
-  .text-light {
-    @apply text-white;
+  .nav-link-navbar {
+    @apply nav-link-base text-dark;
   }
-
-  .bg-primary {
-    @apply bg-blue-600;
+  .nav-link-footer {
+    @apply nav-link-base text-light;
   }
-
-  /* Navigation link styles */
-  .nav-link {
-    @apply text-sm font-medium text-gray-700 transition-colors duration-200 hover:text-blue-600;
-  }
-
   .nav-link-active {
-    @apply border-b-2 border-blue-600 pb-1 text-sm font-semibold text-blue-600;
+    @apply text-primary;
   }
+}
 
-  /* Footer related styles */
-  .ft-title {
-    @apply mb-4 text-xl font-bold text-white;
+@layer components {
+  .nav-link {
+    @apply text-dark transition-colors duration-200 hover:text-primary;
   }
-
-  .ft-subtitle {
-    @apply mb-2 text-lg font-semibold text-white;
+  .nav-link-active {
+    @apply text-primary;
   }
-
-  .ft-content {
-    @apply text-sm leading-relaxed text-gray-300;
-  }
-
-  /* Enhanced button styles */
   .btn-primary {
-    @apply rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-blue-700;
+    @apply rounded-2xl border-2 border-transparent bg-primary px-5 py-2 text-light transition duration-300;
+  }
+  .btn-primary:hover {
+    @apply border-primary bg-transparent text-primary;
   }
 }

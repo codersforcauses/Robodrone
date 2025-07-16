@@ -2,9 +2,9 @@
 import { NextPage } from "next";
 import Head from "next/head";
 
-// import { Footer } from "../components/ui/footer";
+import Footer from "../components/ui/footer";
 import CheckList from "../components/ui/FormatRules/CheckList";
-// import Navbar from "../components/ui/navbar";
+import Navbar from "../components/ui/navbar";
 import ProgressBar from "../components/ui/progress";
 
 // Style constants definition
@@ -102,7 +102,7 @@ const FormatRulesPage: NextPage = () => {
 
       <div className={`min-h-screen ${styles.pageBackground}`}>
         {/* Navigation Bar */}
-        {/* <Navbar /> */}
+        <Navbar />
 
         {/* Main Content - Add pt-20 to avoid being blocked by fixed navbar */}
         <main className="container mx-auto px-4 py-8 pt-20">
@@ -716,7 +716,7 @@ const FormatRulesPage: NextPage = () => {
         </main>
 
         {/* Footer */}
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
