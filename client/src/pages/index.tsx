@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
+import { LuCircleCheckBig } from "react-icons/lu";
 import { RiCalendarScheduleLine } from "react-icons/ri";
+import { TbDrone } from "react-icons/tb";
 
 import { usePings } from "@/hooks/pings";
 
@@ -11,7 +13,6 @@ export default function Home() {
   });
 
   return (
-    /* trying to create hero section between nav bar and running add*/
     <main>
       <section
         className="relative flex min-h-screen items-center justify-center bg-cover bg-center px-4 text-center text-white"
@@ -19,8 +20,6 @@ export default function Home() {
       >
         <div className="absolute inset-0 z-0 bg-gray-900/50"></div>
         <div className="relative z-20 max-w-4xl space-y-6">
-          {" "}
-          {/* space-y-6 rounded-lg bg-black/50 p-8   semi-tranparent background with vertical space between sub-elements of 24px */}
           <h1 className="font-fugazone text-4xl md:text-7xl">
             WHERE SKILL, SPEED, AND{" "}
             <span className="text-primary">STRATEGY</span> TAKE FLIGHT
@@ -31,12 +30,8 @@ export default function Home() {
           <h3 className="body-sm md:text-xl">FTF Obstacle Challenge</h3>
           <div className="flex flex-col justify-center gap-4 md:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
-            <button className="caption rounded-md bg-primary px-5 py-3 font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:opacity-90 hover:saturate-100">
-              View Leaderboard
-            </button>
-            <button className="caption rounded-md bg-primary px-5 py-3 font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:opacity-90 hover:saturate-100">
-              See The Schedule
-            </button>
+            <button className="btn-secondary">View Leaderboard</button>
+            <button className="btn-secondary">See The Schedule</button>
           </div>
         </div>
       </section>
@@ -61,11 +56,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3 cards is a separate sections because of my difficulties animating runnig add inside the section, prob because of cente text */}
+      {/* 3 cards */}
       <section className="flex flex-col justify-center bg-background bg-gray-100 px-6 py-16 text-center text-foreground dark:bg-muted">
-        {/* Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
-        {/* Should I make running adds and 3 cards separate sections? Horizontal padding is 1.5rem, vertical padding is 4rem, span help to give 'inovators' different color */}
-        <h2 className="subtitle primary mb-4 text-4xl">
+        <h2 className="subtitle mb-4 text-4xl text-dark">
           An Event for the Next Generation of{" "}
           <span className="text-primary">Innovators</span>
         </h2>
@@ -74,56 +67,56 @@ export default function Home() {
           strategic thinking
         </p>
         {/*Using grid layout to have thre containers, one for each square*/}
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-[68rem] grid-cols-1 gap-6 md:grid-cols-3">
           {/*stacking vertically 1 card at the time on smaller screens and centering the grid */}
-          <div className="w-full max-w-sm rounded-md bg-white p-10 shadow">
-            <div className="mb-4 text-primary">
-              <span className="text-4xl"></span>
+          <div className="landing-card">
+            <div className="card-icon bg-orange-100 text-orange-400">
+              <TbDrone size={30} />
             </div>
-            <h3 className="card-heading mb-3">The Challenge</h3>
-            <p className="caption mb-5 text-muted-foreground">
+            <h3 className="card-heading">The Challenge</h3>
+            <p className="caption text-muted-foreground">
               2v2 team-based format featuring Mission Zone precision and
               Obstacle Zone speed challenges. Teams must strategize and execute
               flawlessly.
             </p>
-            <a href="#" className="caption mb-5 text-primary">
+            <a href="#" className="body-sm text-primary">
               Learn More About the Event →
             </a>
           </div>
-          <div className="w-full max-w-sm rounded-md bg-white p-10 shadow">
-            <div className="mb-4 text-primary">
-              <span className="text-4xl"></span>
+
+          <div className="landing-card">
+            <div className="card-icon bg-blue-100 text-blue-500">
+              <RiCalendarScheduleLine size={30} />
             </div>
-            {/* <RiCalendarScheduleLine size={30} /> */}
-            <h3 className="card-heading mb-3">The Schedule</h3>
+            <h3 className="card-heading">The Schedule</h3>
             <div>
-              <p className="caption mb-2 text-muted-foreground">
+              <p className="caption text-muted-foreground">
                 <span className="font-semibold">March 15-16: </span>Group Stages
               </p>
-              <p className="caption mb-2 text-muted-foreground">
+              <p className="caption text-muted-foreground">
                 <span className="font-semibold">March 17: </span>Finals Day
               </p>
-              <p className="caption mb-2 text-muted-foreground">
+              <p className="caption text-muted-foreground">
                 <span className="font-semibold">Venue: </span>Melbourne
                 Convention Centre
               </p>
             </div>
-
-            <a href="#" className="caption mb-5 text-primary">
+            <a href="#" className="body-sm mb-5 text-primary">
               View Full Schedule →
             </a>
           </div>
-          <div className="w-full max-w-sm rounded-md bg-white p-10 shadow">
-            <div className="mb-4 text-primary">
-              <span className="text-4xl"></span>
+
+          <div className="landing-card">
+            <div className="card-icon bg-yellow-100 text-yellow-400">
+              <LuCircleCheckBig size={30} />
             </div>
-            <h3 className="card-heading mb-3">The Rules</h3>
-            <p className="caption mb-5 text-muted-foreground">
+            <h3 className="card-heading">The Rules</h3>
+            <p className="caption text-muted-foreground">
               Teams bring their own drones (less than 250g, fully enclosed
               guard). Focus on safety, fair play, and showcasing technical
               skills.
             </p>
-            <a href="#" className="caption mb-5 text-primary">
+            <a href="#" className="body-sm text-primary">
               Download Rules And Manual →
             </a>
           </div>
@@ -131,7 +124,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white px-6 py-20 text-center">
-        <h2 className="subtitle mb-2">
+        <h2 className="subtitle mb-2 text-dark">
           Powered By Our <span className="text-primary">Partners</span>
         </h2>
         <p className="caption mb-12 text-muted-foreground">
