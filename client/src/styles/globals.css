@@ -66,15 +66,18 @@
   }
 }
 
-
 @layer utilities {
   .animate-marquee {
     animation: marquee 25s linear infinite;
   }
 
   @keyframes marquee {
-    0%   { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
   .title-large {
     @apply font-montserrat text-[60px] font-semibold leading-[1em];
@@ -205,9 +208,9 @@
     @apply border-primary bg-transparent text-primary;
   }
   .landing-card {
-    @apply flex flex-col items-center gap-4 w-full max-w-sm rounded-md bg-white p-10 shadow transition duration-200 hover:shadow-lg;
+    @apply flex w-full max-w-sm flex-col items-center gap-4 rounded-md bg-white p-10 shadow transition duration-200 hover:shadow-lg;
   }
   .card-icon {
-    @apply flex justify-center items-center w-16 h-16 rounded-full mb-2
+    @apply mb-2 flex h-16 w-16 items-center justify-center rounded-full;
   }
 }
