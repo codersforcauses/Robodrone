@@ -192,26 +192,11 @@
   .nav-link-active {
     @apply text-primary;
   }
-}
-
-@layer components {
-  .nav-link {
-    @apply text-dark transition-colors duration-200 hover:text-primary;
-  }
-  .nav-link-active {
-    @apply text-primary;
-  }
   .btn-primary {
-    @apply rounded-2xl border-2 border-transparent bg-primary px-5 py-2 text-light transition duration-300;
+    @apply rounded-md border-2 border-transparent bg-primary px-5 py-2 text-white transition duration-300;
   }
   .btn-primary:hover {
     @apply border-primary bg-transparent text-primary;
-  }
-}
-
-@layer components {
-  .card-icon {
-    @apply flex justify-center items-center w-16 h-16 rounded-full mb-2
   }
   .btn-secondary {
     @apply body-sm rounded-md border-2 border-transparent bg-primary px-5 py-2 text-light transition duration-300;
@@ -221,5 +206,8 @@
   }
   .landing-card {
     @apply flex flex-col items-center gap-4 w-full max-w-sm rounded-md bg-white p-10 shadow transition duration-200 hover:shadow-lg;
+  }
+  .card-icon {
+    @apply flex justify-center items-center w-16 h-16 rounded-full mb-2
   }
 }

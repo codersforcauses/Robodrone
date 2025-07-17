@@ -1,21 +1,15 @@
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { LuCircleCheckBig } from "react-icons/lu";
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { TbDrone } from "react-icons/tb";
 
-import { usePings } from "@/hooks/pings";
-
 export default function Home() {
-  const [clicked, setClicked] = useState(false);
-  const { data, isLoading } = usePings({
-    enabled: clicked,
-  });
-
   return (
     <main>
       <section
-        className="relative flex min-h-screen items-center justify-center bg-cover bg-center px-4 text-center text-white"
+        className="relative z-0 flex min-h-screen items-center justify-center bg-cover bg-center px-4 text-center text-white"
         style={{ backgroundImage: "url('/drone.jpg')" }}
       >
         <div className="absolute inset-0 z-0 bg-gray-900/50"></div>
@@ -28,10 +22,20 @@ export default function Home() {
             The 2025 Australia Youth Drone Tournament
           </h2>
           <h3 className="body-sm md:text-xl">FTF Obstacle Challenge</h3>
-          <div className="flex flex-col justify-center gap-4 md:flex-row">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
-            <button className="btn-secondary">View Leaderboard</button>
-            <button className="btn-secondary">See The Schedule</button>
+            <Link
+              href="/leaderboard"
+              className="btn-secondary w-fit self-center md:w-auto md:self-auto"
+            >
+              View Leaderboard
+            </Link>
+            <Link
+              href="/schedule"
+              className="btn-secondary w-fit self-center md:w-auto md:self-auto"
+            >
+              See The Schedule
+            </Link>
           </div>
         </div>
       </section>
@@ -79,9 +83,9 @@ export default function Home() {
               Obstacle Zone speed challenges. Teams must strategize and execute
               flawlessly.
             </p>
-            <a href="#" className="body-sm text-primary">
+            <Link href="/format-rules" className="body-sm text-primary">
               Learn More About the Event →
-            </a>
+            </Link>
           </div>
 
           <div className="landing-card">
@@ -101,9 +105,9 @@ export default function Home() {
                 Convention Centre
               </p>
             </div>
-            <a href="#" className="body-sm mb-5 text-primary">
+            <Link href="/schedule" className="body-sm mb-5 text-primary">
               View Full Schedule →
-            </a>
+            </Link>
           </div>
 
           <div className="landing-card">
@@ -116,9 +120,9 @@ export default function Home() {
               guard). Focus on safety, fair play, and showcasing technical
               skills.
             </p>
-            <a href="#" className="body-sm text-primary">
-              Download Rules And Manual →
-            </a>
+            <Link href="/format-rules" className="body-sm text-primary">
+              Download Rules Manual →
+            </Link>
           </div>
         </div>
       </section>

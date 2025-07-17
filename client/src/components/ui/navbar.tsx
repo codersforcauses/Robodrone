@@ -22,7 +22,7 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="fixed left-0 right-0 top-0 h-16 w-full bg-light">
+    <div className="fixed left-0 right-0 top-0 z-50 h-16 w-full bg-white shadow">
       <nav className="medium-sm mx-auto flex h-full max-w-7xl items-center justify-between">
         {/* Logo container */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
@@ -54,7 +54,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={
-                  router.pathname === link.href ? "nav-link-active" : "nav-link"
+                  router.pathname === link.href
+                    ? "nav-link-active"
+                    : "nav-link-base"
                 }
               >
                 {link.label}

@@ -44,8 +44,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Navbar />
-        <div className="w-full">
-          <main className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-24">
+        <div className="w-full pt-16">
+          <main>
             <Component {...pageProps} />
           </main>
         </div>
