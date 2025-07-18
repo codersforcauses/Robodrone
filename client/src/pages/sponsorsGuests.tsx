@@ -32,8 +32,8 @@ const SponsorsAndGuest = () => {
     const fetchData = async () => {
       try {
         const [partnerRes, guestRes] = await Promise.all([
-          fetch("http://localhost:8000/api/partners"),
-          fetch("http://localhost:8000/api/guests"),
+          fetch("http://localhost:8000/api/sponsor/"),
+          fetch("http://localhost:8000/api/sponsor/guests/"),
         ]);
         const partnerData = await partnerRes.json();
         const guestData = await guestRes.json();

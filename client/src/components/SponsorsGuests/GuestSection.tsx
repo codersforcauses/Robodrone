@@ -38,7 +38,7 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
           <div key={idx} className="text-center">
             {/* Guest image box */}
             <div
-              className="mx-auto mb-4 flex items-center justify-center overflow-hidden bg-white shadow-md"
+              className="relative mx-auto mb-4 flex items-center justify-center overflow-hidden bg-white shadow-md"
               style={{ width: "200px", height: "200px" }}
             >
               {guest.image ? (
