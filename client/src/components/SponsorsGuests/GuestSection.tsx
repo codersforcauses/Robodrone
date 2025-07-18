@@ -60,6 +60,8 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
               </h3>
               <p className={`${montserrat.className} text-sm text-white`}>
                 {guest.description}
+              </p>
+              <p className={`${montserrat.className} text-sm text-white`}>
                 {guest.link && (
                   <a
                     href={guest.link}
