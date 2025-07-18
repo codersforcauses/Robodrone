@@ -1,13 +1,22 @@
 import { Montserrat } from "next/font/google";
 import React, { useEffect, useState } from "react";
 
-import SponsorSection from "@/components/SponsorsGuests";
+import { GuestSection,SponsorSection } from "@/components/SponsorsGuests";
 
 type Partner = {
   name: string;
   logo: string;
   link: string;
 };
+
+// Type definition for guest data
+type Guest = {
+  name: string;
+  description: string;
+  link: string;
+  photo?: string;
+};
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -15,6 +24,7 @@ const montserrat = Montserrat({
 
 const SponsorsAndGuest = () => {
   const [partners, setPartners] = useState<Partner[]>([]); // Holds sponsor data
+  const [guests, setGuests] = useState<Guest[]>([]); // Holds guest data
   const [loading, setLoading] = useState(true); // Controls loading state
 
   useEffect(() => {
