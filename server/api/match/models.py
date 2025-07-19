@@ -10,6 +10,9 @@ class Match(models.Model):
 
     def __str__(self):
         return self.match_name
+    
+    class Meta:
+        verbose_name_plural = "matches"
 
 
 class Team(models.Model):

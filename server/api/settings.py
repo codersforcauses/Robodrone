@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "rest_framework",
     "corsheaders",
+    "nested_admin",
     "api.healthcheck",
     "api.match",
     "api.sponsor.apps.SponsorConfig",
