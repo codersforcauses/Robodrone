@@ -142,7 +142,7 @@ export default function List({ data = [] }) {
           <div className="relative">
             <label
               htmlFor="groupSelect"
-              className="body-sm absolute -top-2 left-3 z-10 bg-white px-1 text-xs"
+              className="body-sm bg-white pr-2 text-xs"
             >
               Select Group:
             </label>
