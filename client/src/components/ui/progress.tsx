@@ -8,7 +8,7 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
   switch (pageName) {
     case "schedule":
       progress = 0;
-      titleName = "Schedule";
+      titleName = "Drone Competition Schedule";
       break;
     case "format-rules":
       progress = 25;
@@ -28,7 +28,9 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
     <div>
       <div className="customerBar w-full flex-col justify-center gap-2">
         <div className="mb-10 flex items-center justify-center">
-          <a className="title-large">{titleName}</a>
+          <a className="title-large text-center text-[2.5rem] font-bold text-dark">
+            {titleName}
+          </a>
         </div>
         <div className="flex flex-1">
           <div

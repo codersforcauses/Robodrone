@@ -16,6 +16,7 @@ export default function Footer() {
     { label: "Format & Rules", href: "/format-rules" },
     { label: "Guests & Sponsors", href: "/guests-sponsors" },
     { label: "Leaderboard", href: "/leaderboard" },
+    { label: "Match Details", href: "/match-details" },
   ];
   return (
     <footer className="bg-dark px-6 py-12 text-light">

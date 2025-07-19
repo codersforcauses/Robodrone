@@ -58,7 +58,7 @@ const CheckList: React.FC = () => {
   const completionPercentage = (completedCount / items.length) * 100;
 
   return (
-    <section className="mx-auto max-w-md">
+    <section className="mx-auto">
       {/* Main Card Container */}
       <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg">
         {/* Header Section */}
@@ -146,11 +146,11 @@ const CheckList: React.FC = () => {
         {/* Footer Section */}
         {completionPercentage === 100 && (
           <div className="border-t border-green-100 bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-600">
+            <div className="flex place-content-center items-center gap-6 align-middle">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-green-600">
                 <CheckmarkIcon />
               </div>
-              <div>
+              <div className="px-auto">
                 <p className="body-lg text-green-800">
                   Equipment ready! Your drone meets all requirements
                 </p>
