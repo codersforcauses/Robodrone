@@ -292,5 +292,4 @@ dist
 .DS_Store
 
 opt/
-/server/media
 /server/static_files

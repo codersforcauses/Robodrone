@@ -16,7 +16,7 @@ const montserrat = Montserrat({
   weight: ["400", "600", "700"],
 });
 
-const SponsorSection = ({ partners }: SponsorSectionProps) => {
+const SponsorSection = ({ partners}: SponsorSectionProps) => {
   return (
     <section className="bg-gray-100 py-10 text-center">
       <h2 className={`text-2xl font-bold ${montserrat.className}`}>

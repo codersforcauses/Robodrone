@@ -1,0 +1,11 @@
+[
+  {
+    "model": "sponsor.sponsor",
+    "pk": 1,
+    "fields": {
+      "name": "Squadrone",
+      "logo": "sponsors/logos/aicode_logo_HD.png",
+      "link": "https://squadrone.com.au/"
+    }
+  }
+]
