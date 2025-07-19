@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Match, Team, MatchResult
+from .models import Match, Team
 
 
 class TeamSerializer(serializers.ModelSerializer):
@@ -16,8 +16,6 @@ class MatchSerializer(serializers.ModelSerializer):
         read_only_field = "match_id"
 
 
-class MatchResultSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MatchResult
-        fields = "__all__"
-        read_only_field = "match_result_id"
+class GroupSerializer(serializers.Serializer):
+    team = serializers.CharField(max_length=255)
+    total_points = serializers.IntegerField()

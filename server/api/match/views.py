@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions
 from .models import Match, Team, MatchResult
-from .serializers import MatchSerializer, TeamSerializer, MatchResultSerializer
+from django.db.models import Sum
+from .serializers import MatchSerializer, TeamSerializer, GroupSerializer
 
 
 class MatchViewSet(viewsets.ModelViewSet):
@@ -16,8 +17,8 @@ class TeamViewSet(viewsets.ModelViewSet):
 
 
 class GroupViewSet(viewsets.ModelViewSet):
-    serializer_class = MatchResultSerializer
+    serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return MatchResult.objects.filter(match__group_id=1)
+        return MatchResult.objects.values("team").annotate(total_points=Sum('point'))
