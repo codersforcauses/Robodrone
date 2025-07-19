@@ -4,19 +4,10 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
+import { navlinks } from "@/lib/constants";
+
 export default function Footer() {
   const router = useRouter();
-  type NavLink = {
-    label: string;
-    href: string;
-  };
-  const navlinks: NavLink[] = [
-    { label: "Home", href: "/" },
-    { label: "Schedule", href: "/schedule" },
-    { label: "Format & Rules", href: "/format-rules" },
-    { label: "Guests & Sponsors", href: "/guests-sponsors" },
-    { label: "Leaderboard", href: "/leaderboard" },
-  ];
   return (
     <footer className="bg-dark px-6 py-12 text-light">
       <div className="mx-auto max-w-7xl">

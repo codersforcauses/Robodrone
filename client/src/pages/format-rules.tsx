@@ -13,10 +13,10 @@ const styles = {
   subsectionTitle: "medium-md mb-2 text-neutral-900",
 
   // Layout styles
-  listContent: "ml-4 space-y-2 body-sm text-neutral-900",
-  listIndented: "ml-8 space-y-1 body-sm text-neutral-900",
+  listContent: "ml-2 md:ml-4 space-y-2 body-sm text-neutral-900",
+  listIndented: "ml-4 md:ml-8 space-y-1 body-sm text-neutral-900",
   sectionSpacing: "space-y-4",
-  cardSpacing: "space-y-3",
+  cardSpacing: "w-full px-6 md:px-14",
 
   // Table styles
   tableCell: "border border-gray-300 px-2 py-2 text-center caption",
@@ -99,12 +99,11 @@ const FormatRulesPage: NextPage = () => {
       </Head>
 
       <div className={`min-h-screen ${styles.pageBackground}`}>
-        {/* Navigation Bar */}
-        <Navbar />
+        {/* Navbar is still included from _app.tsx line 46 */}
 
         {/* Main Content - Add pt-20 to avoid being blocked by fixed navbar */}
-        <main className="container mx-auto px-4 py-8 pt-20">
-          <div className="mx-auto max-w-3xl">
+        <main className="container mx-auto px-4 py-8 pt-10 md:pt-12">
+          <div className="mx-auto px-5 py-10 md:px-12">
             {/* Hero Section */}
             <div className="mb-8 text-center">
               {/* ProgressBar Component replaces the title */}

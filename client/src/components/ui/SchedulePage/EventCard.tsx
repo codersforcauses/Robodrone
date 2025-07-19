@@ -18,7 +18,7 @@ export default function EventCard({
   imageSrc,
 }: EventCardProps) {
   return (
-    <div className="mb-14 flex items-start gap-4 rounded-3xl bg-gray-100 p-6">
+    <div className="mb-14 flex flex-col items-center gap-4 rounded-3xl bg-gray-100 p-6 sm:flex-row">
       {/* Text */}
       <div className="min-w-0 flex-[5] pr-4 pt-2">
         <p className="body-lg mb-1 text-secondary">{date}</p>
@@ -65,13 +65,14 @@ export default function EventCard({
         <p className="line-clamp-3 text-text">{description}</p>
       </div>
       {/* Image */}
-      <div className="relative h-[333px] min-w-[411px] flex-[3]">
+      <div className="relative aspect-[411/333] w-full max-w-xs flex-[3] sm:max-w-sm md:max-w-md lg:max-w-lg">
         <Image
           src={imageSrc}
-          alt="placeholder-svg"
+          alt="Event image"
           fill
           className="rounded-2xl object-cover"
           priority
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
     </div>

@@ -1,23 +1,13 @@
 import Image from "next/image";
 
+import ProgressBar from "../progress";
 import EventCard from "./EventCard";
 
 export default function SchedulePage() {
   return (
-    <div>
-      <h1 className="title-large text-center font-bold text-dark">
-        {" "}
-        Drone Competition Schedule{" "}
-      </h1>
-      <div className="relative mx-auto h-[80px] w-[1100px]">
-        <Image
-          src="/ProgressBar1.svg"
-          alt="Progress Bar"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
+    <div className="container mx-auto px-4 py-8">
+      <ProgressBar pageName="schedule" />
+
       <p className="medium-lg pt-8">Our next competition is: </p>
       <p className="subtitle pb-8 font-bold">Monday - July 9th, 2025</p>
 
@@ -27,7 +17,7 @@ export default function SchedulePage() {
         location="Melbourne Convention Centre"
         time="5:00pm - 8:00pm"
         description="The first stage of the competition kicks off with teams battling it out in the group round."
-        imageSrc="/drone.svg"
+        imageSrc="/drone.jpg"
       />
 
       <EventCard
@@ -36,7 +26,7 @@ export default function SchedulePage() {
         location="Murdoch University"
         time="1:00pm - 4:00pm"
         description="Knock out each other!"
-        imageSrc="/drone.svg"
+        imageSrc="/drone.jpg"
       />
       <EventCard
         date="Wednesday - 11 July 2025"
@@ -44,7 +34,7 @@ export default function SchedulePage() {
         location="Location"
         time="5:00pm - 8:00pm"
         description="The final match to determine the drone champion of 2025!"
-        imageSrc="/drone.svg"
+        imageSrc="/drone.jpg"
       />
     </div>
   );

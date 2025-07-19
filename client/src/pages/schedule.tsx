@@ -13,7 +13,7 @@ export default function Schedule() {
   return (
     <main
       className={cn(
-        "flex min-h-screen flex-col items-center gap-4 bg-light p-24 font-sans",
+        "md:pt-15 flex min-h-screen flex-col items-center gap-4 bg-light px-4 py-10 pt-4 font-sans md:px-12",
         fontSans.variable,
       )}
     >
