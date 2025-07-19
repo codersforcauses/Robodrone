@@ -10,14 +10,12 @@ interface SponsorSectionProps {
   partners: Partner[];
 }
 
-const SponsorSection = ({ partners}: SponsorSectionProps) => {
+const SponsorSection = ({ partners }: SponsorSectionProps) => {
   return (
     <section className="bg-gray-100 py-10 text-center">
-      <h2 className={`text-2xl font-bold font-montserrat`}>
+      <h2 className={`font-montserrat text-2xl font-bold`}>
         Powered By Our{" "}
-        <span className={`text-orange-500 font-montserrat`}>
-          Partners
-        </span>
+        <span className={`font-montserrat text-orange-500`}>Partners</span>
       </h2>
       <div className="mt-6 flex flex-wrap justify-center gap-6 px-4">
         {partners.map((partner, index) => (

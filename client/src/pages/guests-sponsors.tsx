@@ -48,9 +48,7 @@ const SponsorsAndGuest = () => {
     <div className="min-h-screen bg-background">
       {/* Page title */}
       <div className="pt-20 text-center">
-        <h1
-          className={`text-6xl font-semibold leading-none font-montserrat`}
-        >
+        <h1 className={`font-montserrat text-6xl font-semibold leading-none`}>
           Guests & Sponsors
         </h1>
       </div>

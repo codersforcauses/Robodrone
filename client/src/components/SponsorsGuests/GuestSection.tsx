@@ -15,11 +15,9 @@ interface GuestSectionProps {
 // GuestSection component renders the special guests section
 const GuestSection = ({ guests }: GuestSectionProps) => {
   return (
-    <div
-      className="mt-12 w-full px-8 py-16 bg-[#54595F]"
-    >
+    <div className="mt-12 w-full bg-[#54595F] px-8 py-16">
       <h2
-        className={`text-center text-3xl font-bold text-black font-montserrat leading-[1.15em]`}
+        className={`text-center font-montserrat text-3xl font-bold leading-[1.15em] text-black`}
       >
         Special Guests
       </h2>
@@ -28,9 +26,7 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
         {guests.map((guest, idx) => (
           <div key={idx} className="text-center">
             {/* Guest image box */}
-            <div
-              className="relative mx-auto mb-4 flex items-center justify-center overflow-hidden bg-white shadow-md w-[200px] h-[200px]"
-            >
+            <div className="relative mx-auto mb-4 flex h-[200px] w-[200px] items-center justify-center overflow-hidden bg-white shadow-md">
               {guest.image ? (
                 <Image
                   src={guest.image}
@@ -44,7 +40,7 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
             {/* Guest name and description */}
             <div>
               <h3
-                className={`mb-2 text-lg font-semibold text-white font-montserrat`}
+                className={`mb-2 font-montserrat text-lg font-semibold text-white`}
               >
                 {guest.name}
               </h3>
