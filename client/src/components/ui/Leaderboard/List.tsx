@@ -135,17 +135,15 @@ export default function List({ data = [] }) {
   };
 
   return (
-    <div className="w-full overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full overflow-hidden rounded-lg px-10">
       <div className="overflow-x-auto">
         {/* Group selection dropdown */}
-        <div className="flex bg-white p-4">
+        <div
+          className="flex"
+          style={{ backgroundColor: "rgb(244 244 244)" }}
+          p-4
+        >
           <div className="relative">
-            <label
-              htmlFor="groupSelect"
-              className="body-sm absolute -top-2 left-3 z-10 bg-white px-1 text-xs"
-            >
-              Select Group:
-            </label>
             <select
               id="groupSelect"
               value={selectedGroup}
@@ -164,12 +162,12 @@ export default function List({ data = [] }) {
         <table className="min-w-full bg-white">
           <thead>
             <tr className="title bg-primary text-center font-bold text-white">
-              <th className="px-6 py-4 md:text-lg">Group Rank</th>
-              <th className="px-6 py-4 md:text-lg">Team</th>
-              <th className="px-6 py-4 md:text-lg">Honour Points</th>
-              <th className="px-6 py-4 md:text-lg">Regular Points</th>
-              <th className="px-6 py-4 md:text-lg">Mission Time</th>
-              <th className="px-6 py-4 md:text-lg">Status</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Group Rank</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Team</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Honour Points</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Regular Points</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Mission Time</th>
+              <th className="px-6 py-4 text-xs md:text-lg">Status</th>
             </tr>
           </thead>
           <tbody className="body-sm">

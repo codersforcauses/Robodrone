@@ -22,10 +22,14 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
       titleName = "Sponsor & Guest";
       progress = 75;
       break;
+    case "progress":
+      titleName = "Progress";
+      progress = 15;
+      break;
   }
 
   return (
-    <div>
+    <div className="w-full px-10">
       <div className="customerBar w-full flex-col justify-center gap-2">
         <div className="mb-10 flex items-center justify-center">
           <a className="title-large text-center text-[2.5rem] font-bold text-dark">
