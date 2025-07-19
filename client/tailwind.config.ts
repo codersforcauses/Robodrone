@@ -22,8 +22,9 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
-        jakarta: ["var(--font-plus-jakarta)", ...fontFamily.sans],
         worksans: ["var(--font-worksans)", ...fontFamily.sans],
+        fugazone: ["var(--font-fugazone)", ...fontFamily.sans],
+        jakarta: ["var(--font-plus-jakarta)", ...fontFamily.sans],
       },
       colors: {
         primary: "#F89200",
