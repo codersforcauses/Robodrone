@@ -24,7 +24,7 @@ export default function Home() {
           <h3 className="body-sm md:text-xl">FTF Obstacle Challenge</h3>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             {/*flex-col to stack on small screen and md:flex-row for med screens*/}
-            <Link
+            {/* <Link
               href="/leaderboard"
               className="btn-secondary w-fit self-center md:w-auto md:self-auto"
             >
@@ -35,29 +35,13 @@ export default function Home() {
               className="btn-secondary w-fit self-center md:w-auto md:self-auto"
             >
               See The Schedule
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
 
-      <div className="overflow-hidden whitespace-nowrap bg-primary text-white">
-        {/* running ad line, also called stock line, does anyone know how to do the actual countdown? */}
-        <div className="animate-marquee inline-block px-4 py-2 text-sm font-bold">
-          {/* marquee is just an image scroll btw */}
-          <span className="caption mx-4 inline-block">
-            🔴 LIVE: Competition starts in: 15 days, 4 hours, 32 minutes
-            {"      "}
-          </span>
-          <span className="caption mx-4 inline-block">
-            📅 Group Stages: March 15-16, 2025{"       "}
-          </span>
-          <span className="caption mx-4 inline-block">
-            🏆 Finals: March 17, 2025{"       "}
-          </span>
-          <span className="caption mx-4 inline-block">
-            📍 Venue: Melbourne Convention Centre{"       "}
-          </span>
-        </div>
+      <div className="overflow-hidden whitespace-nowrap bg-primary">
+        <div className="inline-block px-4 py-4"></div>
       </div>
 
       {/* 3 cards */}
@@ -83,8 +67,8 @@ export default function Home() {
               Obstacle Zone speed challenges. Teams must strategize and execute
               flawlessly.
             </p>
-            <Link href="/format-rules" className="body-sm text-primary">
-              Learn More About the Event →
+            <Link href="/leaderboard" className="body-sm text-primary">
+              Check Out the Current Standings →
             </Link>
           </div>
 
@@ -121,7 +105,7 @@ export default function Home() {
               skills.
             </p>
             <Link href="/format-rules" className="body-sm text-primary">
-              Download Rules Manual →
+              View Competition Format & Rules →
             </Link>
           </div>
         </div>

@@ -67,18 +67,6 @@
 }
 
 @layer utilities {
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
   .title-large {
     @apply font-montserrat text-[60px] font-semibold leading-[1em];
   }
