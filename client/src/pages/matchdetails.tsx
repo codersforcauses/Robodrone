@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { MatchDetailsData } from "../../components/ui/Common/types";
-import List, { MatchDetailsProps } from "../../components/ui/Matchdetails/List";
+import { MatchDetailsData } from "../components/ui/Common/types";
+import List, { MatchDetailsProps } from "../components/ui/Matchdetails/List";
 
 const columns = [
   "Team name",
@@ -47,7 +47,7 @@ const mockData: MatchDetailsData[] = [
   },
 ];
 
-export default function Leaderboard() {
+export default function MatchDetails() {
   const [data, setData] = useState(mockData);
 
   useEffect(() => {
