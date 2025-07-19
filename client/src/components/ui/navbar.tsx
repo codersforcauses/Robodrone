@@ -4,21 +4,12 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FiAlignJustify, FiX } from "react-icons/fi";
 
+import { navlinks } from "@/lib/constants";
+
 export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  type NavLink = {
-    label: string;
-    href: string;
-  };
-  const navlinks: NavLink[] = [
-    { label: "Home", href: "/" },
-    { label: "Schedule", href: "/schedule" },
-    { label: "Format & Rules", href: "/format-rules" },
-    { label: "Guests & Sponsors", href: "/guests-sponsors" },
-    { label: "Leaderboard", href: "/leaderboard" },
-    { label: "Match Details", href: "/match-details" },
-  ];
+
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };

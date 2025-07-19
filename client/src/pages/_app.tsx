@@ -44,11 +44,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Navbar />
-        <div className="w-full pt-16">
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </div>
+        <main className="w-full pt-16">
+          <Component {...pageProps} />
+        </main>
       </QueryClientProvider>
       <Footer />
     </div>

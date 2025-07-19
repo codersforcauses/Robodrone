@@ -77,21 +77,21 @@
     @apply font-montserrat text-[32px] font-bold leading-[1.15em];
   }
   .medium-lg {
-    @apply font-montserrat text-[24px] font-[500];
+    @apply font-montserrat text-[24px] font-medium;
   }
   /* button */
   .medium-md {
-    @apply font-montserrat text-[18px] font-[500];
+    @apply font-montserrat text-[18px] font-medium;
   }
   /* navbar */
   .medium-sm {
     @apply font-montserrat text-[14px] font-bold;
   }
   .body-lg {
-    @apply font-worksans text-[22px] font-[500];
+    @apply font-worksans text-[22px] font-medium;
   }
   .body-sm {
-    @apply font-worksans text-[17px] font-[500];
+    @apply font-worksans text-[17px] font-medium;
   }
   .caption {
     @apply font-worksans text-[16px] font-normal;
@@ -110,21 +110,21 @@
     @apply font-montserrat text-[30px] font-bold leading-[1.15em];
   }
   .medium-lg {
-    @apply font-montserrat text-[24px] font-[500];
+    @apply font-montserrat text-[24px] font-medium;
   }
   /* button */
   .medium-md {
-    @apply font-montserrat text-[18px] font-[500];
+    @apply font-montserrat text-[18px] font-medium;
   }
   /* navbar */
   .medium-sm {
     @apply font-montserrat text-[14px] font-bold;
   }
   .body-lg {
-    @apply font-worksans text-[22px] font-[500];
+    @apply font-worksans text-[22px] font-medium;
   }
   .body-sm {
-    @apply font-worksans text-[17px] font-[500];
+    @apply font-worksans text-[17px] font-medium;
   }
   .caption {
     @apply font-worksans text-[16px] font-normal;
@@ -139,21 +139,21 @@
     @apply font-montserrat text-[30px] font-bold leading-[1.15em];
   }
   .medium-lg {
-    @apply font-montserrat text-[24px] font-[500];
+    @apply font-montserrat text-[24px] font-medium;
   }
   /* button */
   .medium-md {
-    @apply font-montserrat text-[18px] font-[500];
+    @apply font-montserrat text-[18px] font-medium;
   }
   /* navbar */
   .medium-sm {
     @apply font-montserrat text-[14px] font-bold tracking-wide;
   }
   .body-lg {
-    @apply font-worksans text-[22px] font-[500];
+    @apply font-worksans text-[22px] font-medium;
   }
   .body-sm {
-    @apply font-worksans text-[17px] font-[500];
+    @apply font-worksans text-[17px] font-medium;
   }
   .caption {
     @apply font-worksans text-[16px] font-normal;
