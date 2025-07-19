@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const groupNames: String[] = ["Group A", "Group B", "Group C"];
+const groupNames: String[] = ["", "Group A", "Group B", "Group C"];
 
 export default function List({ data = [] }) {
   // Mock data for development (with four teams per group)
@@ -96,33 +96,36 @@ export default function List({ data = [] }) {
     },
   ];
 
+  // TODO: Fetch real data from api/match/group
+
   // Use provided data or fallback to mock data
   const rawData = data.length > 0 ? data : mockData;
 
-  // Get unique groups for dropdown
-  const groups = [...new Set(rawData.map((item) => item.group))];
+  // Get unique groups
+  const groupIds = [...new Set(rawData.map((item) => item.group))];
 
-  function addCalculatedFields(rawData: any) {
+  function processData(rawData: Array<any>) {
     let teamsData: Array<any> = [];
 
-    for (let i = 0; i < groups.length; i++) {
-      // For each group
+    // For each group
+    for (let i = 0; i < groupIds.length; i++) {
       // Get all the teams in that group
       let groupData = rawData.filter((team) => {
-        return team.group === i;
+        return team.group === groupIds[i];
       });
 
       // Sort them descending by points
       groupData.sort((teamA, teamB) => {
-        console.log(teamA.regular_points, teamB.regular_points);
         return teamB.regular_points - teamA.regular_points;
+        // TODO: Implement sorting by honor points in case of draw, then by time to finish
       });
 
       // Add each of those teams into the teamData with calculated fields
       for (let j = 0; j < groupData.length; j++) {
         let team = groupData[j];
-        team.group_rank = j + 1;
-        team.qualified = team.group_rank <= 2;
+        team.group = groupNames[team.group];
+        team.group_rank = j + 1; // TODO: Make resistant to ties
+        team.qualified = team.group_rank <= 2; // TODO: Make resistant to ties
         team.mission_time =
           "" +
           Math.floor(team.total_time_seconds / 60) +
@@ -135,7 +138,10 @@ export default function List({ data = [] }) {
   }
 
   // Add calculated fields group_rank and qualified to the data
-  const teamsData = addCalculatedFields(rawData);
+  const teamsData = processData(rawData);
+
+  // Get unique groups for dropdown
+  const groups = [...new Set(teamsData.map((item) => item.group))];
 
   // Initialize selectedGroup with the first group instead of "All Groups"
   const [selectedGroup, setSelectedGroup] = useState(groups[0] || 1);
