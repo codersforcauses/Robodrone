@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "api.healthcheck",
     "api.match",
     "api.sponsor.apps.SponsorConfig",
+    "api.details"
 ]
 
 MIDDLEWARE = [
