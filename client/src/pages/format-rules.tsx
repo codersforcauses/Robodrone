@@ -102,7 +102,7 @@ const FormatRulesPage: NextPage = () => {
         {/* Navbar is still included from _app.tsx line 46 */}
 
         {/* Main Content - Add pt-20 to avoid being blocked by fixed navbar */}
-        <main className="container mx-auto px-4 py-8 pt-10 md:pt-20">
+        <main className="container mx-auto px-4 py-8 pt-10 md:pt-12">
           <div className="mx-auto px-5 py-10 md:px-12">
             {/* Hero Section */}
             <div className="mb-8 text-center">
