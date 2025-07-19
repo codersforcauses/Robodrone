@@ -38,7 +38,7 @@ export default function Navbar() {
         </div>
 
         {/* Navbar options/links container */}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-8 pr-6 lg:flex">
           {navlinks.map((link) => (
             <Link
               key={link.href}
