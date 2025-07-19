@@ -25,5 +25,4 @@ class GroupViewSet(viewsets.ModelViewSet):
             .annotate(team_name=F("team__team_name"))\
             .annotate(group=F("match__group_id"))\
             .annotate(total_points=Sum('point'))
-        # print(result)
         return result
