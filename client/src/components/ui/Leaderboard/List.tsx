@@ -130,7 +130,7 @@ export default function List({ data = [] }) {
   // Filter data for the selected group only
   const displayData = teamsData.filter((item) => item.group === selectedGroup);
 
-  const handleGroupChange = (e) => {
+  const handleGroupChange = (e: any) => {
     setSelectedGroup(e.target.value);
   };
 
