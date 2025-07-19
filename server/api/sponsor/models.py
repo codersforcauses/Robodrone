@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Sponsor(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=256)
     logo = models.ImageField(upload_to='sponsors/logos/')  # Field for sponsor logo
     link = models.URLField(blank=True)
 
@@ -14,7 +14,7 @@ class Sponsor(models.Model):
 
 
 class Guest(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=256)
     description = models.TextField(blank=True)
     link = models.URLField(blank=True)
     photo = models.ImageField(upload_to='guests/photos/', blank=True)
