@@ -6,7 +6,6 @@ import type { AppProps } from "next/app";
 import { Montserrat, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
 
 import Footer from "../components/ui/footer";
-import Navbar from "../components/ui/navbar";
 
 const fontMontserrat = Montserrat({
   subsets: ["latin"],
