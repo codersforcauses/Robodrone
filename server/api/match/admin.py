@@ -2,29 +2,14 @@
 
 from django.contrib import admin
 from .models import Match, Team, MatchResult
+import nested_admin
 
 
-@admin.register(Match)
-class MatchAdmin(admin.ModelAdmin):
-    list_display = ('match_name', 'match_date', 'group_id', 'stage_id')
-    search_fields = ('match_name',)
-    list_filter = ('group_id', 'stage_id')
-
-
-@admin.register(Team)
-class TeamAdmin(admin.ModelAdmin):
-    list_display = ('team_name', 'created_at')
-    search_fields = ('team_name',)
-    list_filter = ('created_at',)
-
-
-@admin.register(MatchResult)
-class MatchResultAdmin(admin.ModelAdmin):
-    list_display = (
-        'match', 'team', 'white_pins', 'penalty_pins', 'yellow_cards', 'red_cards',
-        'p1_position', 'p2_position', 'honor_point', 'point', 'completed_time_second'
-    )
-    exclude = ('honor_point', 'point')
+class MatchResultInline(nested_admin.NestedTabularInline):
+    model = MatchResult
+    extra = 4  # 4 match results by default
+    max_num = 5
+    readonly_fields = ('honor_point', 'point')
     list_filter = ('match', 'team')
     search_fields = ('match__match_name', 'team__team_name')
 
@@ -44,3 +29,17 @@ class MatchResultAdmin(admin.ModelAdmin):
             obj.honor_point = self._get_honor_point(obj.p1_position, obj.p2_position)
 
         super().save_model(request, obj, form, change)  # Call the parent's save_model
+
+
+class MatchAdmin(nested_admin.NestedModelAdmin):
+    inlines = [MatchResultInline]
+
+
+admin.site.register(Match, MatchAdmin)
+
+
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('team_name', 'created_at')
+    search_fields = ('team_name',)
+    list_filter = ('created_at',)
