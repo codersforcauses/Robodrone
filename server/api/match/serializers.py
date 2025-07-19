@@ -17,5 +17,7 @@ class MatchSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.Serializer):
-    team = serializers.CharField(max_length=255)
+    group = serializers.IntegerField()
+    team = serializers.IntegerField()
+    team_name = serializers.CharField(max_length=64)
     total_points = serializers.IntegerField()
