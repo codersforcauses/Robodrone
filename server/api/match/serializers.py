@@ -20,4 +20,6 @@ class GroupSerializer(serializers.Serializer):
     group = serializers.IntegerField()
     team = serializers.IntegerField()
     team_name = serializers.CharField(max_length=64)
-    total_points = serializers.IntegerField()
+    regular_points = serializers.IntegerField()
+    honor_points = serializers.IntegerField()
+    total_time_seconds = serializers.IntegerField()

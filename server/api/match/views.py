@@ -24,5 +24,7 @@ class GroupViewSet(viewsets.ModelViewSet):
         result = MatchResult.objects.values("team", "team__team_name", "match__group_id")\
             .annotate(team_name=F("team__team_name"))\
             .annotate(group=F("match__group_id"))\
-            .annotate(total_points=Sum('point'))
+            .annotate(honor_points=Sum('honor_point'))\
+            .annotate(regular_points=Sum('point'))\
+            .annotate(total_time_seconds=Sum('completed_time_second'))
         return result

@@ -1,131 +1,150 @@
 import { useEffect, useState } from "react";
 
+const groupNames: String[] = ["", "Group A", "Group B", "Group C"];
+
 export default function List({ data = [] }) {
   // Mock data for development (with four teams per group)
   const mockData = [
     // Group A teams
     {
-      groupRank: 1,
-      teamName: "Drone Rangers",
-      honourPoints: 350,
-      regularPoints: 420,
-      missionTime: "01:45:22",
-      group: "Group A",
-      qualified: true,
+      team_name: "Drone Rangers",
+      honor_points: 350,
+      regular_points: 420,
+      total_time_seconds: 154,
+      group: 1,
     },
     {
-      groupRank: 2,
-      teamName: "RoboPilots",
-      honourPoints: 290,
-      regularPoints: 365,
-      missionTime: "02:05:33",
-      group: "Group A",
-      qualified: true,
+      team_name: "RoboPilots",
+      honor_points: 290,
+      regular_points: 365,
+      total_time_seconds: 234,
+      group: 1,
     },
     {
-      groupRank: 3,
-      teamName: "Airborne Coders",
-      honourPoints: 210,
-      regularPoints: 280,
-      missionTime: "02:15:40",
-      group: "Group A",
-      qualified: false,
+      team_name: "Airborne Coders",
+      honor_points: 210,
+      regular_points: 280,
+      total_time_seconds: 163,
+      group: 1,
     },
     {
-      groupRank: 4,
-      teamName: "Flying Algorithms",
-      honourPoints: 180,
-      regularPoints: 240,
-      missionTime: "02:30:15",
-      group: "Group A",
-      qualified: false,
+      team_name: "Flying Algorithms",
+      honor_points: 180,
+      regular_points: 240,
+      total_time_seconds: 274,
+      group: 1,
     },
 
     // Group B teams
     {
-      groupRank: 1,
-      teamName: "Sky Navigators",
-      honourPoints: 320,
-      regularPoints: 380,
-      missionTime: "01:52:10",
-      group: "Group B",
-      qualified: true,
+      team_name: "Sky Navigators",
+      honor_points: 320,
+      regular_points: 380,
+      total_time_seconds: 198,
+      group: 2,
     },
     {
-      groupRank: 2,
-      teamName: "Circuit Flyers",
-      honourPoints: 250,
-      regularPoints: 310,
-      missionTime: "02:18:20",
-      group: "Group B",
-      qualified: true,
+      team_name: "Circuit Flyers",
+      honor_points: 250,
+      regular_points: 310,
+      total_time_seconds: 193,
+      group: 2,
     },
     {
-      groupRank: 3,
-      teamName: "Byte Squadron",
-      honourPoints: 220,
-      regularPoints: 290,
-      missionTime: "02:25:17",
-      group: "Group B",
-      qualified: false,
+      team_name: "Byte Squadron",
+      honor_points: 220,
+      regular_points: 290,
+      total_time_seconds: 198,
+      group: 2,
     },
     {
-      groupRank: 4,
-      teamName: "Quantum Wings",
-      honourPoints: 190,
-      regularPoints: 250,
-      missionTime: "02:35:45",
-      group: "Group B",
-      qualified: false,
+      team_name: "Quantum Wings",
+      honor_points: 190,
+      regular_points: 250,
+      total_time_seconds: 183,
+      group: 2,
     },
 
     // Group C teams
     {
-      groupRank: 1,
-      teamName: "Aerial Mechanics",
-      honourPoints: 270,
-      regularPoints: 340,
-      missionTime: "02:11:45",
-      group: "Group C",
-      qualified: true,
+      team_name: "Aerial Mechanics",
+      honor_points: 270,
+      regular_points: 340,
+      total_time_seconds: 348,
+      group: 3,
     },
     {
-      groupRank: 2,
-      teamName: "PropCoders",
-      honourPoints: 240,
-      regularPoints: 300,
-      missionTime: "02:20:30",
-      group: "Group C",
-      qualified: true,
+      team_name: "PropCoders",
+      honor_points: 240,
+      regular_points: 300,
+      total_time_seconds: 314,
+      group: 3,
     },
     {
-      groupRank: 3,
-      teamName: "Binary Flyers",
-      honourPoints: 200,
-      regularPoints: 270,
-      missionTime: "02:28:55",
-      group: "Group C",
-      qualified: false,
+      team_name: "Binary Flyers",
+      honor_points: 200,
+      regular_points: 270,
+      total_time_seconds: 109,
+      group: 3,
     },
     {
-      groupRank: 4,
-      teamName: "Aerodynamic Devs",
-      honourPoints: 170,
-      regularPoints: 230,
-      missionTime: "02:38:20",
-      group: "Group C",
-      qualified: false,
+      team_name: "Aerodynamic Devs",
+      honor_points: 170,
+      regular_points: 230,
+      total_time_seconds: 54,
+      group: 3,
     },
   ];
 
+  // TODO: Fetch real data from api/match/group
+
   // Use provided data or fallback to mock data
-  const teamsData = data.length > 0 ? data : mockData;
+  const rawData = data.length > 0 ? data : mockData;
+
+  // Get unique groups
+  const groupIds = [...new Set(rawData.map((item) => item.group))];
+
+  function processData(rawData: Array<any>) {
+    let teamsData: Array<any> = [];
+
+    // For each group
+    for (let i = 0; i < groupIds.length; i++) {
+      // Get all the teams in that group
+      let groupData = rawData.filter((team) => {
+        return team.group === groupIds[i];
+      });
+
+      // Sort them descending by points
+      groupData.sort((teamA, teamB) => {
+        return teamB.regular_points - teamA.regular_points;
+        // TODO: Implement sorting by honor points in case of draw, then by time to finish
+      });
+
+      // Add each of those teams into the teamData with calculated fields
+      for (let j = 0; j < groupData.length; j++) {
+        let team = groupData[j];
+        team.group = groupNames[team.group];
+        team.group_rank = j + 1; // TODO: Make resistant to ties
+        team.qualified = team.group_rank <= 2; // TODO: Make resistant to ties
+        team.mission_time =
+          "" +
+          Math.floor(team.total_time_seconds / 60) +
+          ":" +
+          (team.total_time_seconds % 60);
+        teamsData.push(team);
+      }
+    }
+    return teamsData;
+  }
+
+  // Add calculated fields group_rank and qualified to the data
+  const teamsData = processData(rawData);
 
   // Get unique groups for dropdown
   const groups = [...new Set(teamsData.map((item) => item.group))];
 
   // Initialize selectedGroup with the first group instead of "All Groups"
-  const [selectedGroup, setSelectedGroup] = useState(groups[0] || "Group A");
+  const [selectedGroup, setSelectedGroup] = useState(groups[0] || 1);
 
   // Filter data for the selected group only
   const displayData = teamsData.filter((item) => item.group === selectedGroup);
@@ -181,12 +200,12 @@ export default function List({ data = [] }) {
                 }`}
               >
                 <td className="body-lg px-6 py-4 font-bold italic">
-                  {row.groupRank}
+                  {row.group_rank}
                 </td>
-                <td className="px-6 py-4">{row.teamName}</td>
-                <td className="px-6 py-4">{row.honourPoints}</td>
-                <td className="px-6 py-4">{row.regularPoints}</td>
-                <td className="px-6 py-4">{row.missionTime}</td>
+                <td className="px-6 py-4">{row.team_name}</td>
+                <td className="px-6 py-4">{row.honor_points}</td>
+                <td className="px-6 py-4">{row.regular_points}</td>
+                <td className="px-6 py-4">{row.mission_time}</td>
                 <td className="px-6 py-4">
                   {row.qualified ? (
                     <span className="font-medium text-green-600">
