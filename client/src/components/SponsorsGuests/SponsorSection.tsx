@@ -1,4 +1,3 @@
-import { Montserrat } from "next/font/google";
 import Image from "next/image";
 
 type Partner = {
@@ -11,17 +10,12 @@ interface SponsorSectionProps {
   partners: Partner[];
 }
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
 const SponsorSection = ({ partners}: SponsorSectionProps) => {
   return (
     <section className="bg-gray-100 py-10 text-center">
-      <h2 className={`text-2xl font-bold ${montserrat.className}`}>
+      <h2 className={`text-2xl font-bold font-montserrat`}>
         Powered By Our{" "}
-        <span className={`text-orange-500 ${montserrat.className}`}>
+        <span className={`text-orange-500 font-montserrat`}>
           Partners
         </span>
       </h2>
@@ -32,13 +26,13 @@ const SponsorSection = ({ partners}: SponsorSectionProps) => {
             href={partner.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 transition hover:opacity-80"
+            className="flex items-center transition hover:opacity-80"
           >
             <div className="relative h-16 w-32">
               <Image
                 src={partner.logo}
                 alt={partner.name}
-                layout="fill"
+                fill
                 objectFit="contain"
                 className="object-contain"
               />

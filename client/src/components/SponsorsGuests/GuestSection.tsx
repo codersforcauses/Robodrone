@@ -1,11 +1,4 @@
-// components/GuestSection.tsx
-import { Montserrat } from "next/font/google";
 import Image from "next/image";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
 
 // Type definition for a guest item
 type Guest = {
@@ -23,12 +16,10 @@ interface GuestSectionProps {
 const GuestSection = ({ guests }: GuestSectionProps) => {
   return (
     <div
-      className="mt-12 w-full px-8 py-16"
-      style={{ backgroundColor: "#54595F" }}
+      className="mt-12 w-full px-8 py-16 bg-[#54595F]"
     >
       <h2
-        className={`text-center text-3xl font-bold text-black ${montserrat.className}`}
-        style={{ lineHeight: "1.15em" }}
+        className={`text-center text-3xl font-bold text-black font-montserrat leading-[1.15em]`}
       >
         Special Guests
       </h2>
@@ -38,15 +29,14 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
           <div key={idx} className="text-center">
             {/* Guest image box */}
             <div
-              className="relative mx-auto mb-4 flex items-center justify-center overflow-hidden bg-white shadow-md"
-              style={{ width: "200px", height: "200px" }}
+              className="relative mx-auto mb-4 flex items-center justify-center overflow-hidden bg-white shadow-md w-[200px] h-[200px]"
             >
               {guest.image ? (
                 <Image
                   src={guest.image}
                   alt={guest.name}
                   className="h-full w-full object-cover"
-                  layout="fill"
+                  fill
                 />
               ) : null}
             </div>
@@ -54,14 +44,14 @@ const GuestSection = ({ guests }: GuestSectionProps) => {
             {/* Guest name and description */}
             <div>
               <h3
-                className={`mb-2 text-lg font-semibold text-white ${montserrat.className}`}
+                className={`mb-2 text-lg font-semibold text-white font-montserrat`}
               >
                 {guest.name}
               </h3>
-              <p className={`${montserrat.className} text-sm text-white`}>
+              <p className={`font-montserrat text-sm text-white`}>
                 {guest.description}
               </p>
-              <p className={`${montserrat.className} text-sm text-white`}>
+              <p className={`font-montserrat text-sm text-white`}>
                 {guest.link && (
                   <a
                     href={guest.link}
