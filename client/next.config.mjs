@@ -7,6 +7,9 @@ const isWindowsDevContainer = () =>
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["squadrone.com.au"],
+  },
   reactStrictMode: true,
   images: {
     domains: ['localhost', '127.0.0.1'], 

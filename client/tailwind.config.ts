@@ -21,21 +21,26 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        montserrat: ["var(--font-montserrat)", ...fontFamily.sans],
+        jakarta: ["var(--font-plus-jakarta)", ...fontFamily.sans],
+        worksans: ["var(--font-worksans)", ...fontFamily.sans],
       },
       colors: {
-        border: "hsl(var(--border))",
+        primary: "#F89200",
+        secondary: "#54595F",
+        text: "#7A7A7A",
+        light: "#F4F4F4",
+        dark: "#212529",
+        bgDark: "#151518",
+        bgLight: "F3F3F3",
+        bgCard: "#33302D",
+        border: "#4E4846",
+        buttonDark: "#030304",
+        // pre-set colors, to be deleted
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
