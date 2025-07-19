@@ -1,5 +1,3 @@
-// 文件路径: /workspaces/robodrone/client/src/components/ui/FormatRules/StageSection.tsx
-
 interface StageSectionProps {
   title: string;
   description: string;

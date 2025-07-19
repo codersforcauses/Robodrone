@@ -1,8 +1,6 @@
-// Format & Rules page implementation - Complete version with all missing content
 import { NextPage } from "next";
 import Head from "next/head";
 
-import Footer from "../components/ui/footer";
 import CheckList from "../components/ui/FormatRules/CheckList";
 import Navbar from "../components/ui/navbar";
 import ProgressBar from "../components/ui/progress";
@@ -714,9 +712,6 @@ const FormatRulesPage: NextPage = () => {
             <CheckList />
           </div>
         </main>
-
-        {/* Footer */}
-        <Footer />
       </div>
     </>
   );
