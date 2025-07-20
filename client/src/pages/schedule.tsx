@@ -3,7 +3,6 @@ import { useState } from "react";
 import { usePings } from "@/hooks/pings";
 
 import { Button } from "../components/ui/button";
-import ProgressBar from "../components/ui/progress";
 
 export default function Home() {
   const [clicked, setClicked] = useState(false);
@@ -13,9 +12,6 @@ export default function Home() {
 
   return (
     <>
-      <div className="mt-4 w-full justify-center">
-        <ProgressBar pageName="schedule" />
-      </div>
       <Button onClick={() => setClicked(true)}>
         {isLoading ? "Loading" : "Ping"}
       </Button>

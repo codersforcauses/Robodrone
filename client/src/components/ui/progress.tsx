@@ -1,36 +1,49 @@
 import Image from "next/image";
-import * as React from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { getPageConfigByName } from "../../config/pages";
 
 export default function ProgressBar({ pageName }: { pageName: string }) {
-  const [progressWidth, setProgressWidth] = React.useState(0);
-  let progress = 0;
-  let titleName = "";
+  const [progressWidth, setProgressWidth] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const previousPageRef = useRef<string>("");
+  const previousProgressRef = useRef<number>(0);
+  const isFirstRenderRef = useRef<boolean>(true);
 
-  switch (pageName) {
-    case "schedule":
-      progress = 0;
-      titleName = "Drone Competition Schedule";
-      break;
-    case "format-rules":
-      progress = 30;
-      titleName = "Format & Rules";
-      break;
-    case "guests-sponsors":
-      titleName = "Guests & Sponsors";
-      progress = 60;
-      break;
-    case "leaderboard":
-      titleName = "Leaderboard";
-      progress = 80;
-      break;
-  }
+  const pageConfig = getPageConfigByName(pageName);
+  const progress = pageConfig?.progress || 0;
+  const titleName = pageConfig?.title || "";
 
-  React.useEffect(() => {
+  useEffect(() => {
     const updateProgress = () => {
+      let targetProgress = progress;
+
       if (pageName === "leaderboard") {
-        setProgressWidth(window.innerWidth >= 768 ? 90 : 80);
+        targetProgress = window.innerWidth >= 768 ? 90 : 80;
+      }
+
+      if (isFirstRenderRef.current) {
+        setProgressWidth(0);
+        setIsAnimating(true);
+        setTimeout(() => {
+          setProgressWidth(targetProgress);
+          previousProgressRef.current = targetProgress;
+          previousPageRef.current = pageName;
+          isFirstRenderRef.current = false;
+        }, 10);
+      } else if (previousPageRef.current !== pageName) {
+        setIsAnimating(false);
+        setProgressWidth(previousProgressRef.current);
+
+        setTimeout(() => {
+          setIsAnimating(true);
+          setProgressWidth(targetProgress);
+          previousProgressRef.current = targetProgress;
+          previousPageRef.current = pageName;
+        }, 10);
       } else {
-        setProgressWidth(progress);
+        setProgressWidth(targetProgress);
+        previousProgressRef.current = targetProgress;
       }
     };
 
@@ -39,20 +52,30 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
     return () => window.removeEventListener("resize", updateProgress);
   }, [pageName, progress]);
 
+  useEffect(() => {
+    if (isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isAnimating]);
+
   return (
     <div>
       <div className="w-full flex-col justify-center">
         <div className="mb-4 flex items-center justify-center">
-          <a className="title-large text-center text-[30px] text-dark md:text-[50px] lg:text-[60px]">
+          <h1 className="title-large text-center text-[30px] text-dark md:text-[50px] lg:text-[60px]">
             {titleName}
-          </a>
+          </h1>
         </div>
         <div className="flex flex-1 items-center">
           <div
             className="flex-shrink-0"
             style={{
               width: `${progressWidth}%`,
-              transition: "width 3s ease-in-out",
+              transition: isAnimating ? "width 3s ease-in-out" : "none",
             }}
           />
           <div className="flex-shrink-0">
