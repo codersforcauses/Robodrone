@@ -1,6 +1,5 @@
 export type MatchDetailsData = {
   teamName: string;
-  opponent: string;
   whitePins: number;
   penaltyPins: number;
   yellowCard: number;
@@ -10,4 +9,9 @@ export type MatchDetailsData = {
   honorPoint: number;
   regularPoint: number;
   completedTime: number;
+
+  matchId: number;
+  matchName: string;
+  group: number;
+  stage: number;
 };
