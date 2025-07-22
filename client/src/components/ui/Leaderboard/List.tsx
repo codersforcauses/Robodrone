@@ -1,156 +1,68 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
-const groupNames: String[] = ["", "Group A", "Group B", "Group C"];
+const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export default function List({ data = [] }) {
-  // Mock data for development (with four teams per group)
-  const mockData = [
-    // Group A teams
-    {
-      team_name: "Drone Rangers",
-      honor_points: 350,
-      regular_points: 420,
-      total_time_seconds: 154,
-      group: 1,
-    },
-    {
-      team_name: "RoboPilots",
-      honor_points: 290,
-      regular_points: 365,
-      total_time_seconds: 234,
-      group: 1,
-    },
-    {
-      team_name: "Airborne Coders",
-      honor_points: 210,
-      regular_points: 280,
-      total_time_seconds: 163,
-      group: 1,
-    },
-    {
-      team_name: "Flying Algorithms",
-      honor_points: 180,
-      regular_points: 240,
-      total_time_seconds: 274,
-      group: 1,
-    },
+type TeamResult = {
+  team_name: string;
+  honor_point: number;
+  point: number;
+  completed_time_second: number;
+  group: number;
+  group_rank: number;
+  qualified: boolean;
+};
 
-    // Group B teams
-    {
-      team_name: "Sky Navigators",
-      honor_points: 320,
-      regular_points: 380,
-      total_time_seconds: 198,
-      group: 2,
-    },
-    {
-      team_name: "Circuit Flyers",
-      honor_points: 250,
-      regular_points: 310,
-      total_time_seconds: 193,
-      group: 2,
-    },
-    {
-      team_name: "Byte Squadron",
-      honor_points: 220,
-      regular_points: 290,
-      total_time_seconds: 198,
-      group: 2,
-    },
-    {
-      team_name: "Quantum Wings",
-      honor_points: 190,
-      regular_points: 250,
-      total_time_seconds: 183,
-      group: 2,
-    },
+export default function List() {
+  const [groups, setGroups] = useState<number[]>([]);
+  const [selectedGroup, setSelectedGroup] = useState<number | null>(null);
+  const [rawData, setRawData] = useState<TeamResult[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-    // Group C teams
-    {
-      team_name: "Aerial Mechanics",
-      honor_points: 270,
-      regular_points: 340,
-      total_time_seconds: 348,
-      group: 3,
-    },
-    {
-      team_name: "PropCoders",
-      honor_points: 240,
-      regular_points: 300,
-      total_time_seconds: 314,
-      group: 3,
-    },
-    {
-      team_name: "Binary Flyers",
-      honor_points: 200,
-      regular_points: 270,
-      total_time_seconds: 109,
-      group: 3,
-    },
-    {
-      team_name: "Aerodynamic Devs",
-      honor_points: 170,
-      regular_points: 230,
-      total_time_seconds: 54,
-      group: 3,
-    },
-  ];
-
-  // TODO: Fetch real data from api/match/group
-
-  // Use provided data or fallback to mock data
-  const rawData = data.length > 0 ? data : mockData;
-
-  // Get unique groups
-  const groupIds = [...new Set(rawData.map((item) => item.group))];
-
-  function processData(rawData: Array<any>) {
-    let teamsData: Array<any> = [];
-
-    // For each group
-    for (let i = 0; i < groupIds.length; i++) {
-      // Get all the teams in that group
-      let groupData = rawData.filter((team) => {
-        return team.group === groupIds[i];
-      });
-
-      // Sort them descending by points
-      groupData.sort((teamA, teamB) => {
-        return teamB.regular_points - teamA.regular_points;
-        // TODO: Implement sorting by honor points in case of draw, then by time to finish
-      });
-
-      // Add each of those teams into the teamData with calculated fields
-      for (let j = 0; j < groupData.length; j++) {
-        let team = groupData[j];
-        team.group = groupNames[team.group];
-        team.group_rank = j + 1; // TODO: Make resistant to ties
-        team.qualified = team.group_rank <= 2; // TODO: Make resistant to ties
-        team.mission_time =
-          "" +
-          Math.floor(team.total_time_seconds / 60) +
-          ":" +
-          (team.total_time_seconds % 60);
-        teamsData.push(team);
+  // Fetch group list on first load
+  useEffect(() => {
+    async function fetchGroups() {
+      try {
+        const res = await fetch(`${API_BASE}/details/groups/`);
+        const data: number[] = await res.json();
+        setGroups(data);
+        if (data.length > 0) {
+          setSelectedGroup(data[0]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch groups:", err);
       }
     }
-    return teamsData;
-  }
 
-  // Add calculated fields group_rank and qualified to the data
-  const teamsData = processData(rawData);
+    fetchGroups();
+  }, []);
 
-  // Get unique groups for dropdown
-  const groups = [...new Set(teamsData.map((item) => item.group))];
+  // Fetch leaderboard for selected group
+  useEffect(() => {
+    if (selectedGroup === null) return;
 
-  // Initialize selectedGroup with the first group instead of "All Groups"
-  const [selectedGroup, setSelectedGroup] = useState(groups[0] || 1);
+    async function fetchLeaderboard() {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `${API_BASE}/details/group_leaderboard/${selectedGroup}/`,
+        );
+        const data = await res.json();
+        setRawData(data);
+      } catch (err) {
+        console.error("Failed to fetch leaderboard:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  // Filter data for the selected group only
-  const displayData = teamsData.filter((item) => item.group === selectedGroup);
+    fetchLeaderboard();
+  }, [selectedGroup]);
 
-  const handleGroupChange = (e: any) => {
-    setSelectedGroup(e.target.value);
+  const handleGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newGroup = parseInt(e.target.value, 10);
+    setSelectedGroup(newGroup);
   };
 
   return (
@@ -167,58 +79,73 @@ export default function List({ data = [] }) {
             </label>
             <select
               id="groupSelect"
-              value={selectedGroup}
+              value={selectedGroup ?? ""}
               onChange={handleGroupChange}
               className="body-sm rounded-md border border-gray-300 bg-white px-4 py-2 pt-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
             >
-              {groups.map((group) => (
-                <option key={group} value={group}>
-                  {group}
+              <option value="" disabled>
+                -- Select --
+              </option>
+              {groups.map((groupId) => (
+                <option key={groupId} value={groupId}>
+                  Group {groupId}
                 </option>
               ))}
             </select>
           </div>
         </div>
 
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr className="title bg-primary text-center font-bold text-white">
-              <th className="px-6 py-4 md:text-lg">Group Rank</th>
-              <th className="px-6 py-4 md:text-lg">Team</th>
-              <th className="px-6 py-4 md:text-lg">Honour Points</th>
-              <th className="px-6 py-4 md:text-lg">Regular Points</th>
-              <th className="px-6 py-4 md:text-lg">Mission Time</th>
-              <th className="px-6 py-4 md:text-lg">Status</th>
-            </tr>
-          </thead>
-          <tbody className="body-sm">
-            {displayData.map((row, index) => (
-              <tr
-                key={index}
-                className={`border-b border-gray-200 text-center hover:bg-gray-100 ${
-                  row.qualified ? "bg-green-50" : ""
-                }`}
-              >
-                <td className="body-lg px-6 py-4 font-bold italic">
-                  {row.group_rank}
-                </td>
-                <td className="px-6 py-4">{row.team_name}</td>
-                <td className="px-6 py-4">{row.honor_points}</td>
-                <td className="px-6 py-4">{row.regular_points}</td>
-                <td className="px-6 py-4">{row.mission_time}</td>
-                <td className="px-6 py-4">
-                  {row.qualified ? (
-                    <span className="font-medium text-green-600">
-                      Qualified
-                    </span>
-                  ) : (
-                    <span className="text-gray-500">Not Qualified</span>
-                  )}
-                </td>
+        {loading ? (
+          <p className="py-8 text-center">Loading leaderboard...</p>
+        ) : (
+          <table className="min-w-full bg-white">
+            <thead>
+              <tr className="title bg-orange-500 text-center font-bold text-white">
+                <th className="px-6 py-4 md:text-lg">Group Rank</th>
+                <th className="px-6 py-4 md:text-lg">Team</th>
+                <th className="px-6 py-4 md:text-lg">Honour Points</th>
+                <th className="px-6 py-4 md:text-lg">Regular Points</th>
+                <th className="px-6 py-4 md:text-lg">Mission Time</th>
+                <th className="px-6 py-4 md:text-lg">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="body-sm">
+              {rawData.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-6 text-center text-gray-400">
+                    No results yet
+                  </td>
+                </tr>
+              ) : (
+                rawData.map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-gray-200 text-center hover:bg-gray-100 ${
+                      row.qualified ? "bg-green-50" : ""
+                    }`}
+                  >
+                    <td className="body-lg px-6 py-4 font-bold italic">
+                      {row.group_rank}
+                    </td>
+                    <td className="px-6 py-4">{row.team_name}</td>
+                    <td className="px-6 py-4">{row.honor_point}</td>
+                    <td className="px-6 py-4">{row.point}</td>
+                    <td className="px-6 py-4">{row.completed_time_second}</td>
+                    <td className="px-6 py-4">
+                      {row.qualified ? (
+                        <span className="font-medium text-green-600">
+                          Qualified
+                        </span>
+                      ) : (
+                        <span className="text-gray-500">Not Qualified</span>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
