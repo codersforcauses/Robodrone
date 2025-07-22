@@ -1,0 +1,146 @@
+[
+  {
+    "model": "sponsor.sponsor",
+    "pk": 1,
+    "fields": {
+      "name": "Squadrone",
+      "logo": "sponsors/logos/squaredrone.png",
+      "link": "https://squadrone.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 2,
+    "fields": {
+      "name": "Chinese Mums Incorporated",
+      "logo": "sponsors/logos/chinese_mums_incorporated.png",
+      "link": ""
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 3,
+    "fields": {
+      "name": "Murdoch University",
+      "logo": "sponsors/logos/murdoch_university.png",
+      "link": "https://www.murdoch.edu.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 4,
+    "fields": {
+      "name": "St. Andrew's Grammar",
+      "logo": "sponsors/logos/st_andrews_grammar.png",
+      "link": "https://sag.wa.edu.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 5,
+    "fields": {
+      "name": "St Columba's Catholic Primary School",
+      "logo": "sponsors/logos/st_columbas.png",
+      "link": "https://www.stcolumbassp.wa.edu.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 6,
+    "fields": {
+      "name": "AiZone",
+      "logo": "sponsors/logos/aizone.png",
+      "link": "https://www.aizone.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 7,
+    "fields": {
+      "name": "Structured Finance Group",
+      "logo": "sponsors/logos/structured_finance_group.png",
+      "link": "https://sfgfinance.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 8,
+    "fields": {
+      "name": "Hung Lightning",
+      "logo": "sponsors/logos/hung_lightning.png",
+      "link": ""
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 9,
+    "fields": {
+      "name": "ICC Stem",
+      "logo": "sponsors/logos/icc_stem.png",
+      "link": "https://www.iccstem.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 10,
+    "fields": {
+      "name": "UX Machines",
+      "logo": "sponsors/logos/ux_machines.png",
+      "link": "https://uxmachines.com/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 11,
+    "fields": {
+      "name": "Sky Legends",
+      "logo": "sponsors/logos/sky_legends.png",
+      "link": "https://www.skylegends.com/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 12,
+    "fields": {
+      "name": "VIP Think",
+      "logo": "sponsors/logos/vip_think.png",
+      "link": ""
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 13,
+    "fields": {
+      "name": "The University of Western Australia",
+      "logo": "sponsors/logos/uwa.png",
+      "link": "https://www.uwa.edu.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 14,
+    "fields": {
+      "name": "Hey Kids",
+      "logo": "sponsors/logos/hey_kids.png",
+      "link": "https://www.heykids.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 15,
+    "fields": {
+      "name": "MOSTWA",
+      "logo": "sponsors/logos/mostwa.png",
+      "link": "https://mostwa.com.au/"
+    }
+  },
+  {
+    "model": "sponsor.sponsor",
+    "pk": 16,
+    "fields": {
+      "name": "Aus App",
+      "logo": "sponsors/logos/aus_app.png",
+      "link": ""
+    }
+  }
+]

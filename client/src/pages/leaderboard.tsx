@@ -1,23 +1,25 @@
-import { useState } from "react";
+import Image from "next/image";
 
-import { usePings } from "@/hooks/pings";
+import List from "../components/ui/Leaderboard/List";
 
-import { Button } from "../components/ui/button";
-
-export default function Home() {
-  const [clicked, setClicked] = useState(false);
-  const { data, isLoading } = usePings({
-    enabled: clicked,
-  });
-
+export default function LeaderboardPage() {
   return (
-    <>
-      <Button onClick={() => setClicked(true)}>
-        {isLoading ? "Loading" : "Ping"}
-      </Button>
-      <p>
-        Response from server: <span>{data as string}</span>
-      </p>
-    </>
+    <div className="flex min-h-screen flex-col items-center bg-light pt-8">
+      <div>
+        <h1 className="title-large text-center font-bold">Leaderboard</h1>
+        <div className="relative mx-auto h-[80px] w-[1100px]">
+          <Image
+            src="/ProgressBar4.svg"
+            alt="Progress Bar"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
+      <div className="">
+        <List />
+      </div>
+    </div>
   );
 }

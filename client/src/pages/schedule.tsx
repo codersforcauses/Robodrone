@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { Inter as FontSans } from "next/font/google";
 
-import { usePings } from "@/hooks/pings";
+import { cn } from "@/lib/utils";
 
-import { Button } from "../components/ui/button";
+import SchedulePage from "../components/ui/SchedulePage";
 
-export default function Home() {
-  const [clicked, setClicked] = useState(false);
-  const { data, isLoading } = usePings({
-    enabled: clicked,
-  });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
+export default function Schedule() {
   return (
-    <>
-      <Button onClick={() => setClicked(true)}>
-        {isLoading ? "Loading" : "Ping"}
-      </Button>
-      <p>
-        Response from server: <span>{data as string}</span>
-      </p>
-    </>
+    <main
+      className={cn(
+        "md:pt-15 flex min-h-screen flex-col items-center gap-4 bg-light px-4 py-10 pt-4 font-sans md:px-12",
+        fontSans.variable,
+      )}
+    >
+      <SchedulePage />
+    </main>
   );
 }

@@ -11,6 +11,9 @@ const nextConfig = {
     domains: ["squadrone.com.au"],
   },
   reactStrictMode: true,
+  images: {
+    domains: ['localhost', '127.0.0.1', 'squadrone.com.au'], 
+  },
   // dumb fix for windows docker
   webpack: isWindowsDevContainer()
     ? (config) => {

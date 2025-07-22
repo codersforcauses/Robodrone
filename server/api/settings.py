@@ -38,6 +38,11 @@ ALLOWED_HOSTS = (
     else []
 )
 
+CSRF_TRUSTED_ORIGINS = (
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    os.environ.get("FRONTEND_URL"),
+)
 
 # Application definition
 
@@ -51,8 +56,11 @@ INSTALLED_APPS = [
     "django_extensions",
     "rest_framework",
     "corsheaders",
+    "nested_admin",
     "api.healthcheck",
     "api.match",
+    "api.sponsor.apps.SponsorConfig",
+    "api.details"
 ]
 
 MIDDLEWARE = [
@@ -69,6 +77,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    os.environ.get("FRONTEND_URL")
 ]
 
 ROOT_URLCONF = "api.urls"
@@ -157,3 +166,6 @@ STATICFILES_DIRS = ("static",)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
