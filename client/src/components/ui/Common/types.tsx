@@ -4,10 +4,10 @@ export type MatchDetailsData = {
   penaltyPins: number;
   yellowCard: number;
   redCard: number;
-  p1_postion: number;
-  p2_postion: number;
+  p1_position: number;
+  p2_position: number;
   honorPoint: number;
-  regularPoint: number;
+  point: number;
   completedTime: number;
 
   matchId: number;
