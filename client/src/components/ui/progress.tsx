@@ -80,7 +80,7 @@ export default function ProgressBar({ pageName }: { pageName: string }) {
           />
           <div className="flex-shrink-0">
             <Image
-              src="/Drone.svg"
+              src="/drone.svg"
               alt="Drone"
               width="30"
               height="12"

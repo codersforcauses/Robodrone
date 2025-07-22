@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 
+import CheckList from "../components/ui/FormatRules/CheckList";
 import ProgressBar from "../components/ui/progress";
 
 // Style constants definition
@@ -104,9 +105,6 @@ const FormatRulesPage: NextPage = () => {
           <div className="mx-auto px-5 py-10 md:px-12">
             {/* Hero Section */}
             <div className="mb-8 text-center">
-              {/* ProgressBar Component replaces the title */}
-              <ProgressBar pageName="format-rules" />
-
               <ContentText className="body-lg">
                 Complete guide to the 2025 WRC Drone Speed Challenge. Each match
                 is a<strong> 3-minute </strong>2v2 team competition with two
