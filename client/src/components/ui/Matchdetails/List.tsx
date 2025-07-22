@@ -177,7 +177,7 @@ export default function MatchDetailsList() {
                     </h2>
                     <table className="min-w-full bg-white shadow">
                       <thead>
-                        <tr className="bg-primary text-center text-xs font-bold text-white sm:text-sm md:text-base">
+                        <tr className="title bg-primary text-center text-xs font-bold text-white sm:text-sm md:text-base">
                           {header.map((col, i) => (
                             <th key={i} className="whitespace-nowrap px-2 py-2">
                               {col}

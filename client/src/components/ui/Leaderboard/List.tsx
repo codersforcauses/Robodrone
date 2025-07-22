@@ -100,8 +100,8 @@ export default function List() {
         ) : (
           <table className="min-w-full bg-white">
             <thead>
-              <tr className="title bg-orange-500 text-center font-bold text-white">
-                <th className="px-6 py-4 md:text-lg">Group Rank</th>
+              <tr className="title bg-primary text-center text-xs font-bold text-white sm:text-sm md:text-base">
+                <th className="md:text-l px-6 py-4">Group Rank</th>
                 <th className="px-6 py-4 md:text-lg">Team</th>
                 <th className="px-6 py-4 md:text-lg">Honour Points</th>
                 <th className="px-6 py-4 md:text-lg">Regular Points</th>
