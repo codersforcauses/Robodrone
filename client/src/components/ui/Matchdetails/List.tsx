@@ -56,8 +56,8 @@ export default function MatchDetailsList() {
             honorPoint: item.honor_point,
             point: item.point,
             completedTime: item.completed_time_second,
-            p1_postion: item.p1_position,
-            p2_postion: item.p2_position,
+            p1_position: item.p1_position,
+            p2_position: item.p2_position,
             whitePins: item.white_pins,
             penaltyPins: item.penalty_pins,
             yellowCard: item.yellow_cards,
@@ -157,43 +157,57 @@ export default function MatchDetailsList() {
             </p>
           ) : (
             <div className="space-y-10 px-4 pb-8 pt-4">
-              {sortedMatchData.map((match, idx) => (
-                <div key={idx}>
-                  <h2 className="subtitle mb-4 font-semibold text-primary">
-                    {match[0]?.matchName ?? `Match ${idx + 1}`}
-                  </h2>
-                  <table className="min-w-full bg-white shadow">
-                    <thead>
-                      <tr className="bg-primary text-center text-xs font-bold text-white sm:text-sm md:text-base">
-                        {header.map((col, i) => (
-                          <th key={i} className="whitespace-nowrap px-2 py-2">
-                            {col}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="body-sm text-center">
-                      {match.map((row, index) => (
-                        <tr
-                          key={index}
-                          className="border-b border-gray-200 bg-green-50 hover:bg-gray-100"
-                        >
-                          <td className="px-4 py-2">{row.teamName}</td>
-                          <td className="px-4 py-2">{row.whitePins}</td>
-                          <td className="px-4 py-2">{row.penaltyPins}</td>
-                          <td className="px-4 py-2">{row.yellowCard}</td>
-                          <td className="px-4 py-2">{row.redCard}</td>
-                          <td className="px-4 py-2">{row.p1_postion}</td>
-                          <td className="px-4 py-2">{row.p2_postion}</td>
-                          <td className="px-4 py-2">{row.honorPoint}</td>
-                          <td className="px-4 py-2">{row.point}</td>
-                          <td className="px-4 py-2">{row.completedTime}</td>
+              {sortedMatchData.map((match, idx) => {
+                // Sort teams within each match
+                const sortedTeams = [...match].sort((a, b) => {
+                  // Sort by: honor point DESC, point DESC, completed time ASC
+                  if (b.honorPoint !== a.honorPoint) {
+                    return b.honorPoint - a.honorPoint;
+                  } else if (b.point !== a.point) {
+                    return b.point - a.point;
+                  } else {
+                    return a.completedTime - b.completedTime;
+                  }
+                });
+
+                return (
+                  <div key={idx}>
+                    <h2 className="subtitle mb-4 font-semibold text-primary">
+                      {match[0]?.matchName ?? `Match ${idx + 1}`}
+                    </h2>
+                    <table className="min-w-full bg-white shadow">
+                      <thead>
+                        <tr className="bg-primary text-center text-xs font-bold text-white sm:text-sm md:text-base">
+                          {header.map((col, i) => (
+                            <th key={i} className="whitespace-nowrap px-2 py-2">
+                              {col}
+                            </th>
+                          ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ))}
+                      </thead>
+                      <tbody className="body-sm text-center">
+                        {sortedTeams.map((row, index) => (
+                          <tr
+                            key={index}
+                            className="border-b border-gray-200 bg-green-50 hover:bg-gray-100"
+                          >
+                            <td className="px-4 py-2">{row.teamName}</td>
+                            <td className="px-4 py-2">{row.whitePins}</td>
+                            <td className="px-4 py-2">{row.penaltyPins}</td>
+                            <td className="px-4 py-2">{row.yellowCard}</td>
+                            <td className="px-4 py-2">{row.redCard}</td>
+                            <td className="px-4 py-2">{row.p1_position}</td>
+                            <td className="px-4 py-2">{row.p2_position}</td>
+                            <td className="px-4 py-2">{row.honorPoint}</td>
+                            <td className="px-4 py-2">{row.point}</td>
+                            <td className="px-4 py-2">{row.completedTime}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              })}
             </div>
           )
         ) : (
