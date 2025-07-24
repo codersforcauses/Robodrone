@@ -202,3 +202,12 @@
     @apply mb-2 flex h-16 w-16 items-center justify-center rounded-full;
   }
 }
+
+@layer components {
+  .nav-link {
+    @apply text-dark transition-colors duration-200 hover:text-primary;
+  }
+  .nav-link-active {
+    @apply text-primary;
+  }
+}

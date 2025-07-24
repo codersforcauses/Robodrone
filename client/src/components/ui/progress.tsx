@@ -1,68 +1,106 @@
 import Image from "next/image";
-import { title } from "process";
-import * as React from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { getPageConfigByName } from "../../config/pages";
 
 export default function ProgressBar({ pageName }: { pageName: string }) {
-  let progress = 0;
-  let titleName = "";
-  switch (pageName) {
-    case "schedule":
-      progress = 0;
-      titleName = "Drone Competition Schedule";
-      break;
-    case "format-rules":
-      progress = 25;
-      titleName = "Format Rules";
-      break;
-    case "leaderboard":
-      titleName = "Leaderboard";
-      progress = 50;
-      break;
-    case "sponsor-guest":
-      titleName = "Sponsor & Guest";
-      progress = 75;
-      break;
-  }
+  const [progressWidth, setProgressWidth] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const previousPageRef = useRef<string>("");
+  const previousProgressRef = useRef<number>(0);
+  const isFirstRenderRef = useRef<boolean>(true);
+
+  const pageConfig = getPageConfigByName(pageName);
+  const progress = pageConfig?.progress || 0;
+  const titleName = pageConfig?.title || "";
+
+  useEffect(() => {
+    const updateProgress = () => {
+      let targetProgress = progress;
+
+      if (pageName === "leaderboard") {
+        targetProgress = window.innerWidth >= 768 ? 90 : 80;
+      }
+
+      if (isFirstRenderRef.current) {
+        setProgressWidth(0);
+        setIsAnimating(true);
+        setTimeout(() => {
+          setProgressWidth(targetProgress);
+          previousProgressRef.current = targetProgress;
+          previousPageRef.current = pageName;
+          isFirstRenderRef.current = false;
+        }, 10);
+      } else if (previousPageRef.current !== pageName) {
+        setIsAnimating(false);
+        setProgressWidth(previousProgressRef.current);
+
+        setTimeout(() => {
+          setIsAnimating(true);
+          setProgressWidth(targetProgress);
+          previousProgressRef.current = targetProgress;
+          previousPageRef.current = pageName;
+        }, 10);
+      } else {
+        setProgressWidth(targetProgress);
+        previousProgressRef.current = targetProgress;
+      }
+    };
+
+    updateProgress();
+    window.addEventListener("resize", updateProgress);
+    return () => window.removeEventListener("resize", updateProgress);
+  }, [pageName, progress]);
+
+  useEffect(() => {
+    if (isAnimating) {
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isAnimating]);
 
   return (
     <div>
-      <div className="customerBar w-full flex-col justify-center gap-2">
-        <div className="mb-10 flex items-center justify-center">
-          <a className="title-large text-center text-[2.5rem] font-bold text-dark">
+      <div className="w-full flex-col justify-center">
+        <div className="mb-4 flex items-center justify-center">
+          <h1 className="title-large text-center text-[30px] text-dark md:text-[50px] lg:text-[60px]">
             {titleName}
-          </a>
+          </h1>
         </div>
-        <div className="flex flex-1">
+        <div className="flex flex-1 items-center">
           <div
             className="flex-shrink-0"
             style={{
-              width: `${progress}%`,
-              transition: "width 3s ease-in-out",
+              width: `${progressWidth}%`,
+              transition: isAnimating ? "width 3s ease-in-out" : "none",
             }}
           />
-          <div>
+          <div className="flex-shrink-0">
             <Image
-              src="/Drone.svg"
+              src="/drone.svg"
               alt="Drone"
-              width="50"
-              height="20"
-              className="object-contain"
+              width="30"
+              height="12"
+              className="object-contain md:h-[16px] md:w-[40px] lg:h-[20px] lg:w-[50px]"
             />
           </div>
 
-          <div className="ml-auto">
+          <div className="ml-auto flex-shrink-0">
             <Image
               src="/FinishFlag.svg"
               alt="Finish Flag"
-              width="50"
-              height="20"
-              className="object-contain"
+              width="20"
+              height="8"
+              className="object-contain md:h-[12px] md:w-[30px] lg:h-[20px] lg:w-[50px]"
             />
           </div>
         </div>
 
         <div className="flex w-full">
-          <div className="h-[2px] w-full bg-black" />
+          <div className="h-[2px] w-full bg-dark" />
         </div>
       </div>
     </div>

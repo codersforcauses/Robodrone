@@ -9,9 +9,12 @@ import {
   Plus_Jakarta_Sans,
   Work_Sans,
 } from "next/font/google";
+import { useRouter } from "next/router";
 
 import Footer from "../components/ui/footer";
 import Navbar from "../components/ui/navbar";
+import ProgressBar from "../components/ui/progress";
+import { getPageName } from "../config/pages";
 
 const fontMontserrat = Montserrat({
   subsets: ["latin"],
@@ -37,6 +40,10 @@ const fontFugazOne = Fugaz_One({
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  const currentPageName = getPageName(router.pathname);
+
   return (
     <div
       className={`${fontMontserrat.variable} ${fontPlusJakartaSans.variable} ${fontWorkSans.variable} ${fontFugazOne.variable}`}
@@ -44,9 +51,16 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Navbar />
-        <main className="w-full pt-16">
-          <Component {...pageProps} />
-        </main>
+        <div className="w-full">
+          <main className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-24">
+            {currentPageName && (
+              <div className="mt-4 w-full justify-center">
+                <ProgressBar pageName={currentPageName} />
+              </div>
+            )}
+            <Component {...pageProps} />
+          </main>
+        </div>
       </QueryClientProvider>
       <Footer />
     </div>

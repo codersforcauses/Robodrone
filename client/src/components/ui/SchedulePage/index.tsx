@@ -6,8 +6,6 @@ import EventCard from "./EventCard";
 export default function SchedulePage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <ProgressBar pageName="schedule" />
-
       <p className="medium-lg pt-8">Our next competition is: </p>
       <p className="subtitle pb-8 font-bold">Monday - July 9th, 2025</p>
 
