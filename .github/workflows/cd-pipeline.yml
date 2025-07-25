@@ -41,6 +41,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            NEXT_PUBLIC_BACKEND_URL=https://robodrone.codersforcauses.org/api
 
       - name: Output client image name
         if: github.event_name != 'pull_request'
