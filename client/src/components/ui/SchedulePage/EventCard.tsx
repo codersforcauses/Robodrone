@@ -5,7 +5,7 @@ type EventCardProps = {
   title: string;
   location: string;
   time: string;
-  description: string;
+  // description: string;
   imageSrc: string;
 };
 
@@ -14,7 +14,7 @@ export default function EventCard({
   title,
   location,
   time,
-  description,
+  // description,
   imageSrc,
 }: EventCardProps) {
   return (
@@ -62,7 +62,7 @@ export default function EventCard({
           </svg>
           <p className="text-text">{time}</p>
         </div>
-        <p className="line-clamp-3 text-text">{description}</p>
+        {/* <p className="line-clamp-3 text-text">{description}</p> */}
       </div>
       {/* Image */}
       <div className="relative aspect-[411/333] w-full max-w-xs flex-[3] sm:max-w-sm md:max-w-md lg:max-w-lg">
