@@ -104,14 +104,15 @@ export default function Home() {
             <h3 className="card-heading">The Schedule</h3>
             <div>
               <p className="caption text-muted-foreground">
-                <span className="font-semibold">March 15-16: </span>Group Stages
+                <span className="font-semibold">31 July 2025: </span>South Metro
               </p>
               <p className="caption text-muted-foreground">
-                <span className="font-semibold">March 17: </span>Finals Day
+                <span className="font-semibold">1 August 2025: </span>North
+                Metro
               </p>
               <p className="caption text-muted-foreground">
-                <span className="font-semibold">Venue: </span>Melbourne
-                Convention Centre
+                <span className="font-semibold">2 August 2025: </span>Award
+                Ceremony & Family STEM Day
               </p>
             </div>
             <Link href="/schedule" className="body-sm mb-5 text-primary">
