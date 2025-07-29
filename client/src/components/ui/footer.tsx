@@ -60,21 +60,19 @@ export default function Footer() {
               Email:
               <br />
               <a
-                href="mailto:info@youthdronetournament.com.au"
+                href="mailto:info@aicodeaustralia.com.au"
                 className="ft-content break-all underline hover:text-primary"
               >
-                info@youthdronetournament.com.au
+                info@aicodeaustralia.com.au
               </a>
             </p>
-            <p className="ft-content mb-2">
-              Venue:
-              <br />
-              Melbourne Convention Centre
-              <br />
-              1 Convention Centre Pl
-              <br />
-              South Wharf VIC 3006
-            </p>
+            {
+              <p className="ft-content mb-2">
+                64 Mill Point Rd
+                <br />
+                South Perth WA 6151
+              </p>
+            }
           </div>
 
           {/* Socials */}
@@ -82,13 +80,13 @@ export default function Footer() {
             <h3 className="ft-subtitle mb-5">Follow Us</h3>
             <div className="mb-5 flex gap-4">
               <a
-                href="https://www.facebook.com/people/Squadrone/100094782254912/"
+                href="https://www.facebook.com/AicodeAustralia/"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
               >
                 <FaFacebookF size={18} />
               </a>
               <a
-                href="https://www.instagram.com/au.Squadrone/#"
+                href="https://www.instagram.com/aicodeaustralia/"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white text-white transition hover:border-primary hover:text-primary"
               >
                 <FaInstagram size={18} />
