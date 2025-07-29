@@ -126,7 +126,7 @@ export default function MatchDetailsList() {
 
           <div className="relative">
             <label htmlFor="groupSelect" className="body-sm pr-2 text-xs">
-              Select Group (optional)
+              Select Group (Select Group 0 For Elimination Round)
             </label>
             <select
               id="groupSelect"
@@ -141,7 +141,7 @@ export default function MatchDetailsList() {
               <option value="">-- None --</option>
               {groups.map((gid) => (
                 <option key={gid} value={gid}>
-                  Group {gid}
+                  {gid === 0 ? "Group 0 (Elimination)" : `Group ${gid}`}
                 </option>
               ))}
             </select>
