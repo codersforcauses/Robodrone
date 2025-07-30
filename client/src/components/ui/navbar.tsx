@@ -18,7 +18,7 @@ export default function Navbar() {
       <nav className="medium-sm mx-auto flex h-full max-w-7xl items-center justify-between">
         {/* Logo container */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
-          <p>Logo</p>
+          <p>2025 Australia Youth Drone Tournament</p>
           {/* <Image
             className="object-contain"
             src="https://squadrone.com.au/wp-content/uploads/2024/11/squadrone-logo-01-scaled.webp"

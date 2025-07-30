@@ -26,9 +26,10 @@ export default function List() {
       try {
         const res = await fetch(`${API_BASE}/details/groups/`);
         const data: number[] = await res.json();
-        setGroups(data);
-        if (data.length > 0) {
-          setSelectedGroup(data[0]);
+        const filteredGroups = data.filter((groupId) => groupId !== 0);
+        setGroups(filteredGroups);
+        if (filteredGroups.length > 0) {
+          setSelectedGroup(filteredGroups[0]);
         }
       } catch (err) {
         console.error("Failed to fetch groups:", err);
