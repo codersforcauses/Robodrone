@@ -18,14 +18,16 @@ export default function Navbar() {
       <nav className="medium-sm mx-auto flex h-full max-w-7xl items-center justify-between">
         {/* Logo container */}
         <div className="relative mx-10 flex h-10 w-28 items-center">
-          <p>2025 Australia Youth Drone Tournament</p>
-          {/* <Image
-            className="object-contain"
-            src="https://squadrone.com.au/wp-content/uploads/2024/11/squadrone-logo-01-scaled.webp"
-            alt="Squadrone Logo"
-            width={2560}
-            height={889}
-          /> */}
+          <Link href="/" className="block h-full">
+            <Image
+              className="object-contain"
+              src="/robopro.png"
+              alt="RoboProLogo"
+              fill
+              sizes="(max-width: 768px) 120px, 150px"
+              priority
+            />
+          </Link>
         </div>
 
         {/* Navbar options/links container */}
